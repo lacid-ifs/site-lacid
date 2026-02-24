@@ -5,6 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">	<title>Página Inicial - LACID</title>
 	<link rel="stylesheet" href="estilo.css">
 	<link rel="icon" href="logoLACID.png" type="image/x-icon">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 	<script src="script.js" defer></script>
 </head>
 <body>
@@ -14,7 +15,7 @@
 		<a href="#atividades">Atividades</a>
 		<a href="#membros">Membros Ativos</a>
 	</nav>
-		<button class="btn-aba-lateral">Contato</button>
+		<button class="btn-aba-lateral"><i class="bi bi-envelope-fill"></i> Contato</button>
 	</header>
 
 	<main>
@@ -43,7 +44,7 @@
                 <div class="noticias-card">
 			<div class="noticias-conteudo">
                         <span class="noticias-tag">
-                            Notícias | <a href="noticias.html" class="link-ver-todas">Ver todas ></a>
+                            Notícias | <a href="noticias.html" class="link-ver-todas">Ver todas <i class="bi bi-arrow-right"></i></a>
                         </span>
                         <h2>PROCESSO SELETIVO DE NOVOS MEMBROS 2026/1</h2>
                         <p class="noticias-texto">A Liga Acadêmica de Ciência de Dados e Inteligência Artificial (LACID), anuncia a abertura das inscrições para o processo seletivo de novos membros, conforme as normas estabelecidas em edital vigente. Voltada à formação complementar nas áreas de Ciência de Dados, Inteligência Artificial e tecnologias adjacentes, a Liga promove atividades de pesquisa aplicada, desenvolvimento de projetos tecnológicos, ações de extensão e divulgação científica.
@@ -52,7 +53,7 @@ O processo seletivo é destinado a estudantes que tenham interesse em aprender n
 
 Se você tem curiosidade por tecnologia, gosta de desafios e quer construir experiência em projetos reais, a LACID é uma oportunidade para crescer academicamente e colaborar com outros estudantes apaixonados por inovação. 🚀</p>
 		</div>
-			<a href="noticia-expandida.html" class="btn-saiba-mais">Saiba mais</a>
+			<a href="noticia-expandida.html" class="btn-saiba-mais">Saiba mais <i class="bi bi-arrow-right"></i></a>
                 </div>
 		</div>
 
@@ -74,32 +75,32 @@ Se você tem curiosidade por tecnologia, gosta de desafios e quer construir expe
    
             <div class="grid-atividades">
                 <div class="card card-inovacao">
-                    <div class="icon-circle"></div>
+                    <div class="icon-circle"><i class="bi bi-lightbulb-fill"></i></div>
                     <h3>Inovação</h3>
                     <p class="card-subtitulo">Projetos e Pesquisa</p>
                     <p>Criamos soluções com IA e análise de dados para desafios reais, incentivando a experimentação e projetos.</p>
-                    <button class="btn-card-branco">Saiba mais</button>
+                    <button class="btn-card-branco"><i class="bi bi-plus-circle"></i> Saiba mais</button>
                 </div>
                 <div class="card card-extensao">
-                    <div class="icon-circle"></div>
+                    <div class="icon-circle"><i class="bi bi-people-fill"></i></div>
                     <h3>Extensão</h3>
                     <p class="card-subtitulo">Comunidade e Impacto</p>
                     <p>Levamos conhecimento em dados e IA para além da universidade por meio de eventos educacionais.</p>
-                    <button class="btn-card-branco">Saiba mais</button>
+                    <button class="btn-card-branco"><i class="bi bi-plus-circle"></i> Saiba mais</button>
                 </div>
                 <div class="card card-oficinas">
-                    <div class="icon-circle"></div>
+                    <div class="icon-circle"><i class="bi bi-tools"></i></div>
                     <h3>Oficinas</h3>
                     <p class="card-subtitulo">Aprendizado Prático</p>
                     <p>Oficinas mão na massa para aprender na prática ferramentas como Python e visualização de dados.</p>
-                    <button class="btn-card-branco">Saiba mais</button>
+                    <button class="btn-card-branco"><i class="bi bi-plus-circle"></i> Saiba mais</button>
                 </div>
                 <div class="card card-minicursos">
-                    <div class="icon-circle"></div>
+                    <div class="icon-circle"><i class="bi bi-book-fill"></i></div>
                     <h3>Minicursos</h3>
                     <p class="card-subtitulo">Formação Estruturada</p>
                     <p>Minicursos organizados por módulos para formação progressiva em Ciência de Dados e IA.</p>
-                    <button class="btn-card-branco">Saiba mais</button>
+                    <button class="btn-card-branco"><i class="bi bi-plus-circle"></i> Saiba mais</button>
                 </div>
             </div>
         </section>
@@ -247,13 +248,16 @@ Se você tem curiosidade por tecnologia, gosta de desafios e quer construir expe
         // ============================================
         const btnContato = document.querySelector('.btn-aba-lateral');
         
-        function mostrarNotificacao(mensagem, tipo = 'info') {
-            const toast = document.createElement('div');
-            toast.style.cssText = `
+        btnContato.addEventListener('click', function(e) {
+            e.preventDefault();
+            const icone = '<i class="bi bi-envelope-at-fill" style="margin-right: 8px;"></i>';
+            const mensagem = document.createElement('div');
+            mensagem.innerHTML = icone + 'Entre em contato: lacid@example.com';
+            mensagem.style.cssText = `
                 position: fixed;
                 top: 100px;
                 right: 30px;
-                background: ${tipo === 'info' ? '#1369D0' : '#F20612'};
+                background: #1369D0;
                 color: white;
                 padding: 20px 30px;
                 border-radius: 20px;
@@ -262,18 +266,14 @@ Se você tem curiosidade por tecnologia, gosta de desafios e quer construir expe
                 box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
                 z-index: 10000;
                 animation: slideInRight 0.5s ease, fadeOut 0.5s ease 3.5s forwards;
+                display: flex;
+                align-items: center;
             `;
-            toast.textContent = mensagem;
-            document.body.appendChild(toast);
+            document.body.appendChild(mensagem);
             
             setTimeout(() => {
-                toast.remove();
+                mensagem.remove();
             }, 4000);
-        }
-        
-        btnContato.addEventListener('click', function(e) {
-            e.preventDefault();
-            mostrarNotificacao('📧 Entre em contato: lacid@example.com', 'info');
             // Aqui você pode adicionar a lógica real de abertura de modal/sidebar
         });
         
@@ -289,7 +289,30 @@ Se você tem curiosidade por tecnologia, gosta de desafios e quer construir expe
                 btnSaibaMais.addEventListener('click', function(e) {
                     e.preventDefault();
                     const tituloCard = card.querySelector('h3').textContent;
-                    mostrarNotificacao(`Em breve: Mais informações sobre ${tituloCard}!`, 'info');
+                    const icone = '<i class="bi bi-info-circle-fill" style="margin-right: 8px;"></i>';
+                    const mensagem = document.createElement('div');
+                    mensagem.innerHTML = icone + `Em breve: Mais informações sobre ${tituloCard}!`;
+                    mensagem.style.cssText = `
+                        position: fixed;
+                        top: 100px;
+                        right: 30px;
+                        background: #1369D0;
+                        color: white;
+                        padding: 20px 30px;
+                        border-radius: 20px;
+                        font-family: 'AvantGarde-Medium', sans-serif;
+                        font-size: 1rem;
+                        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+                        z-index: 10000;
+                        animation: slideInRight 0.5s ease, fadeOut 0.5s ease 3.5s forwards;
+                        display: flex;
+                        align-items: center;
+                    `;
+                    document.body.appendChild(mensagem);
+                    
+                    setTimeout(() => {
+                        mensagem.remove();
+                    }, 4000);
                 });
             }
         });
