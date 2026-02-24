@@ -83,7 +83,7 @@ body {
    4. HERO SECTION (IMAGEM E SIMETRIA)
    ========================================= */
 .hero-header {
-	padding: 30px 5% 10px 5%;
+	padding: 40px 5% 20px 5%;
 	max-width: 1400px;
 }
 
@@ -93,20 +93,23 @@ body {
 	width: 100%;
 	max-width: 450px; /* Tamanho do desenho */
 	height: auto;
-	margin-bottom: 5px;
+	margin-bottom: 8px;
 }
+
 .subtitle { 
     font-family: 'AvantGarde-Bold', sans-serif;
     color: var(--azul-lacid); 
     font-size: 1.2rem; 
     margin-top: 5px; 
-    margin-bottom: 20px; 
+    margin-bottom: 30px; 
     max-width: 380px;
-    line-height: 1.2;
+    line-height: 1.25;
 }
+
 .hero { 
-	display: flex; gap: 8%; 
-	padding: 0 0 60px 5%; 
+	display: flex; 
+	gap: 8%; 
+	padding: 0 0 80px 5%; 
 	align-items: center; 
 }
 
@@ -114,8 +117,12 @@ body {
 .hero-right { flex: 1; padding-right: 0; display: flex; flex-direction: column; }
 
 .carousel-container {
-	width: 100%; height: 450px; position: relative;
-	overflow: hidden; border-radius: 30px; background: #e0e0e0;
+	width: 100%; 
+	height: 450px; 
+	position: relative;
+	overflow: hidden; 
+	border-radius: 30px; 
+	background: #e0e0e0;
 	box-shadow: 0 10px 30px rgba(0,0,0,0.08); 
 }
 .carousel-track { display: flex; width: 300%; height: 100%; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
@@ -131,41 +138,85 @@ body {
 /* Notícias Sidebar */
 .noticias-card { 
 	padding: 0; 
-	display: flex; flex-direction: column; justify-content: center;
+	display: flex; 
+	flex-direction: column; 
+	justify-content: center;
 }
-.noticias-conteudo { max-width: 550px; padding-right: 5vw; }
-.noticias-tag, .noticias-card h2 { color: var(--azul-lacid); }
-.noticias-tag { font-weight: 700; }
-.link-ver-todas { color: var(--azul-texto-claro); text-decoration: none; transition: 0.3s; }
-.link-ver-todas:hover { text-decoration: underline; color: var(--azul-lacid); }
-.noticias-card h2 { font-size: 2.2rem; margin: 10px 0; font-family: 'AvantGarde-BoldOblique', sans-serif; line-height: 1.1; }
+
+.noticias-conteudo { 
+	max-width: 550px; 
+	padding-right: 5vw; 
+}
+
+.noticias-tag, .noticias-card h2 { 
+	color: var(--azul-lacid); 
+}
+
+.noticias-tag { 
+	font-weight: 700; 
+	font-size: 1rem;
+}
+
+.link-ver-todas { 
+	color: var(--azul-texto-claro); 
+	text-decoration: none; 
+	transition: 0.3s; 
+}
+
+.link-ver-todas:hover { 
+	text-decoration: underline; 
+	color: var(--azul-lacid); 
+}
+
+.noticias-card h2 { 
+	font-size: 2.2rem; 
+	margin: 15px 0; 
+	font-family: 'AvantGarde-BoldOblique', sans-serif; 
+	line-height: 1.15; 
+}
+
 .noticias-texto { 
     font-family: 'AvantGarde-Medium', sans-serif; 
-    font-size: 1rem; /* Aumentei levemente para melhorar a leitura */
+    font-size: 1.05rem;
     color: var(--azul-texto-claro); 
-    line-height: 1.1;
-    letter-spacing: 0.5px; 
+    line-height: 1.55;
+    letter-spacing: 0.3px; 
     margin-bottom: 25px; 
     padding-right: 1vw;
     text-align: justify;
 }
+
 .btn-saiba-mais {
-	background-color: var(--rosa-lacid); color: var(--vermelho-lacid); border: none;
+	background-color: var(--rosa-lacid); 
+	color: var(--vermelho-lacid); 
+	border: none;
 	padding: 20px 20px; 
 	border-radius: 100px 0 0 100px !important; 
-	font-family: 'AvantGarde-Medium', sans-serif; font-weight: normal; font-size: 1.3rem;
-	cursor: pointer; transition: transform 0.2s ease, filter 0.2s ease;
-	display: block; width: 350px; max-width: 90%; text-align: center;
-	margin-top: 10px; margin-left: auto; margin-right: 0 !important;
+	font-family: 'AvantGarde-Medium', sans-serif; 
+	font-weight: normal; 
+	font-size: 1.3rem;
+	cursor: pointer; 
+	transition: transform 0.2s ease, filter 0.2s ease;
+	display: block; 
+	width: 350px; 
+	max-width: 90%; 
+	text-align: center;
+	margin-top: 10px; 
+	margin-left: auto; 
+	margin-right: 0 !important;
 	text-decoration: none;
 }
-.btn-saiba-mais:hover { filter: brightness(0.95); transform: translateX(-5px); }
+
+.btn-saiba-mais:hover { 
+	filter: brightness(0.95); 
+	transform: translateX(-5px); 
+}
 
 /* =========================================
    5. SEÇÃO QUEM SOMOS 
    ========================================= */
 .section-container { 
-    padding: 100px 5%; 
+    padding: 80px 5%; 
     display: flex; 
     flex-direction: column; 
     align-items: center; 
@@ -176,7 +227,7 @@ body {
     display: flex; 
     flex-direction: column; 
     align-items: center; 
-    margin: 60px 0; 
+    margin: 40px 0 60px 0; 
 }
 
 .titulo-quem-somos {
@@ -203,32 +254,48 @@ body {
     background-color: var(--azul-claro); 
     color: var(--bg-branco);
     padding: 80px 60px 50px 60px; 
-    max-width: 750px; 
+    max-width: 800px; 
     text-align: center; 
-    line-height: 1.6; 
+    line-height: 1.7; 
     font-size: 1.15rem;
     border-radius: 0 40px 0 40px; 
     position: relative; 
     z-index: 1; 
     box-shadow: 0 15px 30px rgba(0,0,0,0.08);
 	font-family: 'AvantGarde-Medium', sans-serif !important;
-    font-size: 1.15rem;
 }
 
 /* =========================================
    6. SEÇÃO ATIVIDADES
    ========================================= */
+#atividades {
+    padding-top: 100px;
+}
+
 .titulo-atividades-img {
     display: block;
-    margin: 0 auto 60px auto; 
+    margin: 0 auto 70px auto; 
     width: 100%;
     max-width: 550px; 
     height: auto;
 }
-.grid-atividades { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; width: 100%; max-width: 1200px; }
+.grid-atividades { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+    gap: 50px; 
+    width: 100%; 
+    max-width: 1200px; 
+}
+
 .card {
-	padding: 60px 25px 30px; border-radius: 30px; display: flex; flex-direction: column; align-items: center; text-align: center;
-	position: relative; transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
+	padding: 60px 25px 30px; 
+	border-radius: 30px; 
+	display: flex; 
+	flex-direction: column; 
+	align-items: center; 
+	text-align: center;
+	position: relative; 
+	transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
 }
 .card:hover { transform: translateY(-15px); box-shadow: 0 20px 35px rgba(0, 0, 0, 0.15); }
 .card h3 { font-family: 'AvantGarde-BoldOblique', sans-serif; font-size: 1.8rem; margin-bottom: 5px; color: var(--texto-card-titulo); }
@@ -263,7 +330,399 @@ body {
 .card-minicursos { background-color: var(--azul-claro); } .card-minicursos .icon-circle { background-color: var(--dourado-minicursos); }
 
 /* =========================================
-   7. RESPONSIVIDADE (CELULARES)
+   7. SEÇÃO MEMBROS ATIVOS
+   ========================================= */
+.titulo-secao-membros {
+    font-family: 'AvantGarde-Bold', sans-serif;
+    font-size: 4rem;
+    color: var(--vermelho-lacid);
+    text-align: center;
+    margin-bottom: 60px;
+    letter-spacing: -2px;
+}
+
+.grid-membros {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.card-membro {
+    background-color: var(--bg-branco);
+    padding: 30px 20px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-membro:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.foto-membro {
+    width: 120px;
+    height: 120px;
+    background: linear-gradient(135deg, var(--rosa-lacid), var(--azul-claro));
+    border-radius: 50%;
+    margin: 0 auto 20px;
+}
+
+.nome-membro {
+    font-family: 'AvantGarde-Bold', sans-serif;
+    font-size: 1.2rem;
+    color: var(--vermelho-lacid);
+    margin-bottom: 8px;
+}
+
+.cargo-membro {
+    font-family: 'AvantGarde-Medium', sans-serif;
+    font-size: 1rem;
+    color: var(--azul-texto-claro);
+}
+
+/* =========================================
+   8. PÁGINA DE NOTÍCIAS
+   ========================================= */
+.header-noticias {
+    background-color: var(--bg-bege);
+    padding: 40px 5% 30px 5%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.breadcrumb {
+    margin-bottom: 20px;
+}
+
+.icone-home {
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.icone-home:hover {
+    opacity: 0.7;
+}
+
+.titulo-pagina {
+    font-family: 'AvantGarde-Bold', sans-serif;
+    font-size: 4.5rem;
+    color: var(--vermelho-lacid);
+    letter-spacing: -2px;
+    margin: 0;
+}
+
+.layout-duas-colunas {
+    display: flex;
+    gap: 50px;
+    padding: 60px 5%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.coluna-lista {
+    flex: 2;
+}
+
+.coluna-filtros {
+    flex: 1;
+    min-width: 300px;
+}
+
+.grupo-noticias {
+    margin-bottom: 50px;
+}
+
+.data-noticia {
+    font-family: 'AvantGarde-Bold', sans-serif;
+    font-size: 1.8rem;
+    color: var(--azul-lacid);
+    margin-bottom: 20px;
+}
+
+.item-noticia {
+    background-color: var(--bg-branco);
+    padding: 25px 30px;
+    border-radius: 20px;
+    margin-bottom: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.item-noticia:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+.link-noticia {
+    font-family: 'AvantGarde-Medium', sans-serif;
+    font-size: 1.3rem;
+    color: var(--vermelho-lacid);
+    text-decoration: none;
+    display: block;
+}
+
+.link-noticia:hover {
+    color: var(--azul-lacid);
+}
+
+.busca-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.input-busca {
+    flex: 1;
+    padding: 12px 20px;
+    border: 2px solid var(--azul-claro);
+    border-radius: 50px;
+    font-family: 'AvantGarde-Medium', sans-serif;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.input-busca:focus {
+    border-color: var(--azul-lacid);
+}
+
+.btn-busca {
+    background-color: var(--azul-lacid);
+    color: var(--bg-branco);
+    border: none;
+    padding: 12px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease;
+}
+
+.btn-busca:hover {
+    background-color: var(--azul-claro);
+}
+
+.calendario-container {
+    background-color: var(--bg-branco);
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.titulo-filtro {
+    font-family: 'AvantGarde-Bold', sans-serif;
+    font-size: 1.3rem;
+    color: var(--vermelho-lacid);
+    margin-bottom: 20px;
+}
+
+.calendario-box {
+    text-align: center;
+}
+
+.calendario-placeholder {
+    font-family: 'AvantGarde-Medium', sans-serif;
+    color: var(--azul-texto-claro);
+    margin-bottom: 15px;
+}
+
+.tabela-mes {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tabela-mes th,
+.tabela-mes td {
+    padding: 10px;
+    text-align: center;
+    font-family: 'AvantGarde-Medium', sans-serif;
+}
+
+.tabela-mes th {
+    color: var(--azul-lacid);
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.tabela-mes td {
+    color: var(--azul-texto-claro);
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.tabela-mes td:hover {
+    color: var(--vermelho-lacid);
+}
+
+.dia-ativo {
+    background-color: var(--rosa-lacid);
+    color: var(--vermelho-lacid) !important;
+    font-weight: bold;
+    border-radius: 50%;
+}
+
+/* =========================================
+   8. PÁGINA NOTÍCIA EXPANDIDA
+   ========================================= */
+.header-breadcrumb {
+    background-color: var(--bg-bege);
+    padding: 30px 5%;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.header-breadcrumb .icone-home {
+    width: 30px;
+    height: 30px;
+}
+
+.separador {
+    font-family: 'AvantGarde-Bold', sans-serif;
+    font-size: 1.5rem;
+    color: var(--azul-lacid);
+}
+
+.link-voltar {
+    font-family: 'AvantGarde-Medium', sans-serif;
+    font-size: 1.2rem;
+    color: var(--azul-lacid);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.link-voltar:hover {
+    color: var(--vermelho-lacid);
+}
+
+.layout-noticia-aberta {
+    display: flex;
+    gap: 60px;
+    padding: 60px 5%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.coluna-texto-noticia {
+    flex: 2;
+}
+
+.coluna-anexos {
+    flex: 1;
+    min-width: 300px;
+}
+
+.titulo-principal-noticia {
+    font-family: 'AvantGarde-Bold', sans-serif;
+    font-size: 4rem;
+    color: var(--vermelho-lacid);
+    line-height: 1.1;
+    letter-spacing: -2px;
+    margin-bottom: 20px;
+}
+
+.subtitulo-noticia {
+    font-family: 'AvantGarde-BoldOblique', sans-serif;
+    font-size: 1.5rem;
+    color: var(--azul-lacid);
+    margin-bottom: 40px;
+}
+
+.bloco-texto {
+    margin-bottom: 35px;
+}
+
+.topico-texto {
+    font-family: 'AvantGarde-Bold', sans-serif;
+    font-size: 1.6rem;
+    color: var(--azul-lacid);
+    margin-bottom: 15px;
+}
+
+.bloco-texto p {
+    font-family: 'AvantGarde-Medium', sans-serif;
+    font-size: 1.1rem;
+    color: var(--azul-texto-claro);
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.lista-etapas {
+    font-family: 'AvantGarde-Medium', sans-serif;
+    font-size: 1.1rem;
+    color: var(--azul-texto-claro);
+    line-height: 1.8;
+    margin-left: 30px;
+    margin-bottom: 15px;
+}
+
+.lista-etapas li {
+    margin-bottom: 8px;
+}
+
+.box-imagem {
+    background-color: var(--azul-claro);
+    color: var(--bg-branco);
+    padding: 80px 30px;
+    border-radius: 20px;
+    text-align: center;
+    font-family: 'AvantGarde-Bold', sans-serif;
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.box-links {
+    background-color: var(--bg-branco);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.titulo-anexos {
+    font-family: 'AvantGarde-Bold', sans-serif;
+    font-size: 1.8rem;
+    color: var(--vermelho-lacid);
+    margin-bottom: 20px;
+}
+
+.lista-anexos {
+    list-style: none;
+    padding: 0;
+}
+
+.lista-anexos li {
+    margin-bottom: 15px;
+}
+
+.lista-anexos a {
+    font-family: 'AvantGarde-Medium', sans-serif;
+    font-size: 1.1rem;
+    color: var(--azul-lacid);
+    text-decoration: none;
+    padding: 12px 20px;
+    display: block;
+    background-color: var(--bg-bege);
+    border-radius: 10px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.lista-anexos a:hover {
+    background-color: var(--rosa-lacid);
+    color: var(--vermelho-lacid);
+    transform: translateX(5px);
+}
+
+/* =========================================
+   9. RESPONSIVIDADE (CELULARES)
    ========================================= */
 @media (max-width: 850px) {
     .logo-imagem { max-width: 250px; margin: 0 auto; }
@@ -293,5 +752,43 @@ body {
     }
     
     .box-quem-somos { padding: 40px 20px 30px; border-radius: 0 30px 0 30px; }
+    
+    /* Seção Membros - Mobile */
+    .titulo-secao-membros { font-size: 2.5rem; margin-bottom: 30px; }
+    .grid-membros { 
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 25px;
+    }
+    
+    /* Páginas de notícias - Mobile */
+    .titulo-pagina { font-size: 2.5rem; }
+    
+    .layout-duas-colunas {
+        flex-direction: column;
+        padding: 30px 5%;
+        gap: 30px;
+    }
+    
+    .coluna-filtros {
+        min-width: auto;
+        width: 100%;
+    }
+    
+    .titulo-principal-noticia { font-size: 2.5rem; }
+    
+    .layout-noticia-aberta {
+        flex-direction: column;
+        padding: 30px 5%;
+        gap: 30px;
+    }
+    
+    .coluna-anexos {
+        min-width: auto;
+        width: 100%;
+    }
+    
+    .box-imagem {
+        min-height: 200px;
+        padding: 50px 20px;
+    }
 }
-
