@@ -6,6 +6,7 @@
     <title>Notícias - LACID</title>
     <link rel="stylesheet" href="estilo.css">
     <link rel="icon" href="logoLACID.png" type="image/x-icon">
+    <script src="script.js" defer></script>
 </head>
 <body>
 
@@ -62,5 +63,125 @@
 
     </div>
 
+    <script>
+        // ============================================
+        // BUSCA DE NOTÍCIAS
+        // ============================================
+        const inputBusca = document.querySelector('.input-busca');
+        const btnBusca = document.querySelector('.btn-busca');
+        const itensNoticia = document.querySelectorAll('.item-noticia');
+        const gruposNoticias = document.querySelectorAll('.grupo-noticias');
+        
+        function buscarNoticias() {
+            const termoBusca = inputBusca.value.toLowerCase().trim();
+            
+            gruposNoticias.forEach(grupo => {
+                const itens = grupo.querySelectorAll('.item-noticia');
+                let temResultado = false;
+                
+                itens.forEach(item => {
+                    const textoNoticia = item.querySelector('.link-noticia').textContent.toLowerCase();
+                    
+                    if (textoNoticia.includes(termoBusca) || termoBusca === '') {
+                        item.style.display = 'block';
+                        temResultado = true;
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+                
+                // Esconde o grupo inteiro se não houver resultados
+                grupo.style.display = temResultado ? 'block' : 'none';
+            });
+            
+            // Mostra mensagem se não houver resultados
+            const resultadosVisiveis = Array.from(itensNoticia).filter(item => 
+                item.style.display !== 'none'
+            ).length;
+            
+            let mensagemExistente = document.querySelector('.mensagem-sem-resultados');
+            
+            if (resultadosVisiveis === 0 && termoBusca !== '') {
+                if (!mensagemExistente) {
+                    const mensagem = document.createElement('div');
+                    mensagem.className = 'mensagem-sem-resultados';
+                    mensagem.style.cssText = `
+                        text-align: center;
+                        padding: 40px;
+                        font-family: 'AvantGarde-Medium', sans-serif;
+                        font-size: 1.2rem;
+                        color: var(--azul-texto-claro);
+                    `;
+                    mensagem.textContent = 'Nenhuma notícia encontrada para "' + inputBusca.value + '"';
+                    document.querySelector('.coluna-lista').appendChild(mensagem);
+                }
+            } else if (mensagemExistente) {
+                mensagemExistente.remove();
+            }
+        }
+        
+        // Eventos de busca
+        btnBusca.addEventListener('click', buscarNoticias);
+        inputBusca.addEventListener('keyup', function(e) {
+            if (e.key === 'Enter') {
+                buscarNoticias();
+            }
+        });
+        
+        // Busca em tempo real (opcional)
+        inputBusca.addEventListener('input', function() {
+            if (this.value === '') {
+                buscarNoticias(); // Limpa a busca quando o campo está vazio
+            }
+        });
+        
+        // ============================================
+        // FILTRO DE DATA NO CALENDÁRIO
+        // ============================================
+        const diasCalendario = document.querySelectorAll('.tabela-mes td');
+        
+        diasCalendario.forEach(dia => {
+            dia.addEventListener('click', function() {
+                // Remove classe ativa de todos os dias
+                diasCalendario.forEach(d => d.classList.remove('dia-ativo'));
+                
+                // Adiciona classe ativa ao dia clicado
+                this.classList.add('dia-ativo');
+                
+                // Aqui você pode adicionar lógica para filtrar notícias por data
+                const diaSelecionado = this.textContent;
+                console.log('Dia selecionado:', diaSelecionado);
+                
+                // Exemplo: filtrar notícias do dia 20
+                // (Você pode expandir isso para filtrar por data real)
+                // filtrarPorData(diaSelecionado);
+            });
+        });
+        
+        // ============================================
+        // ANIMAÇÃO DE ENTRADA DOS CARDS
+        // ============================================
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -30px 0px'
+        };
+        
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Aplica animação aos itens de notícia
+        itensNoticia.forEach((item, index) => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(20px)';
+            item.style.transition = `opacity 0.5s ease ${index * 0.1}s, transform 0.5s ease ${index * 0.1}s`;
+            observer.observe(item);
+        });
+    </script>
 </body>
 </html>

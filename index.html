@@ -5,6 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">	<title>Página Inicial - LACID</title>
 	<link rel="stylesheet" href="estilo.css">
 	<link rel="icon" href="logoLACID.png" type="image/x-icon">
+	<script src="script.js" defer></script>
 </head>
 <body>
 	<header class="navbar">
@@ -26,9 +27,9 @@
 		<div class="hero-left">
 		<div class="carousel-container">
 			<div class="carousel-track" id="track">
-                        <img src="https://via.placeholder.com/800x500/1369D0/FFFFFF?text=Hackathon+LACID" class="slide" alt="Foto 1">
-                        <img src="https://via.placeholder.com/800x500/7280ED/FFFFFF?text=Reuniao+LACID" class="slide" alt="Foto 2">
-                        <img src="https://via.placeholder.com/800x500/FBAEE2/F20612?text=Projetos" class="slide" alt="Foto 3">
+                        <img src="https://via.placeholder.com/800x500/1369D0/FFFFFF?text=Hackathon+LACID" class="slide" alt="Foto 1" loading="lazy">
+                        <img src="https://via.placeholder.com/800x500/7280ED/FFFFFF?text=Reuniao+LACID" class="slide" alt="Foto 2" loading="lazy">
+                        <img src="https://via.placeholder.com/800x500/FBAEE2/F20612?text=Projetos" class="slide" alt="Foto 3" loading="lazy">
 		</div>
 		<div class="carousel-dots">
 			<span class="dot active" onclick="currentSlide(0)"></span>
@@ -141,15 +142,168 @@ Se você tem curiosidade por tecnologia, gosta de desafios e quer construir expe
     </main>
 
     <script>
+        // ============================================
+        // CARROSSEL DE IMAGENS
+        // ============================================
         let currentIndex = 0;
+        let autoPlayInterval;
         const track = document.getElementById('track');
         const dots = document.querySelectorAll('.dot');
-        function currentSlide(index) { currentIndex = index; updateCarousel(); }
+        const carouselContainer = document.querySelector('.carousel-container');
+        
+        function currentSlide(index) { 
+            currentIndex = index; 
+            updateCarousel(); 
+            resetAutoPlay();
+        }
+        
         function updateCarousel() {
             track.style.transform = `translateX(-${currentIndex * (100 / dots.length)}%)`;
             dots.forEach((dot, i) => dot.classList.toggle('active', i === currentIndex));
         }
-        setInterval(() => { currentIndex = (currentIndex + 1) % dots.length; updateCarousel(); }, 5000);
+        
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % dots.length;
+            updateCarousel();
+        }
+        
+        function startAutoPlay() {
+            autoPlayInterval = setInterval(nextSlide, 5000);
+        }
+        
+        function stopAutoPlay() {
+            clearInterval(autoPlayInterval);
+        }
+        
+        function resetAutoPlay() {
+            stopAutoPlay();
+            startAutoPlay();
+        }
+        
+        // Pausa ao passar o mouse sobre o carrossel
+        carouselContainer.addEventListener('mouseenter', stopAutoPlay);
+        carouselContainer.addEventListener('mouseleave', startAutoPlay);
+        
+        // Inicia o autoplay
+        startAutoPlay();
+        
+        // ============================================
+        // NAVBAR ANIMADA NO SCROLL
+        // ============================================
+        const navbar = document.querySelector('.navbar');
+        
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // ============================================
+        // SMOOTH SCROLL PARA NAVEGAÇÃO
+        // ============================================
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offsetTop = target.offsetTop - 80; // 80px para compensar navbar
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // ============================================
+        // SCROLL REVEAL ANIMATION
+        // ============================================
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Aplica animação aos cards
+        document.querySelectorAll('.card, .card-membro').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+        
+        // ============================================
+        // BOTÃO CONTATO - TOAST NOTIFICATION
+        // ============================================
+        const btnContato = document.querySelector('.btn-aba-lateral');
+        
+        function mostrarNotificacao(mensagem, tipo = 'info') {
+            const toast = document.createElement('div');
+            toast.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: 30px;
+                background: ${tipo === 'info' ? '#1369D0' : '#F20612'};
+                color: white;
+                padding: 20px 30px;
+                border-radius: 20px;
+                font-family: 'AvantGarde-Medium', sans-serif;
+                font-size: 1rem;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+                z-index: 10000;
+                animation: slideInRight 0.5s ease, fadeOut 0.5s ease 3.5s forwards;
+            `;
+            toast.textContent = mensagem;
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.remove();
+            }, 4000);
+        }
+        
+        btnContato.addEventListener('click', function(e) {
+            e.preventDefault();
+            mostrarNotificacao('📧 Entre em contato: lacid@example.com', 'info');
+            // Aqui você pode adicionar a lógica real de abertura de modal/sidebar
+        });
+        
+        // ============================================
+        // CARDS DE ATIVIDADES - INTERAÇÃO
+        // ============================================
+        const cardsAtividades = document.querySelectorAll('.card');
+        
+        cardsAtividades.forEach(card => {
+            const btnSaibaMais = card.querySelector('.btn-card-branco');
+            
+            if (btnSaibaMais) {
+                btnSaibaMais.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const tituloCard = card.querySelector('h3').textContent;
+                    mostrarNotificacao(`Em breve: Mais informações sobre ${tituloCard}!`, 'info');
+                });
+            }
+        });
+        
+        // ============================================
+        // CONTADOR DE MEMBROS (ANIMAÇÃO)
+        // ============================================
+        const cardsMembros = document.querySelectorAll('.card-membro');
+        const numeroMembros = cardsMembros.length;
+        
+        // Adiciona um contador animado (opcional)
+        if (numeroMembros > 0) {
+            console.log(`LACID tem ${numeroMembros} membros ativos!`);
+        }
     </script>
 </body>
 </html>

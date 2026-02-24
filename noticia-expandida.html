@@ -6,6 +6,7 @@
     <title>Processo Seletivo 2026/1 - LACID</title>
     <link rel="stylesheet" href="estilo.css">
     <link rel="icon" href="logoLACID.png" type="image/x-icon">
+    <script src="script.js" defer></script>
 </head>
 <body>
 
@@ -71,5 +72,129 @@
 
     </article>
 
+    <script>
+        // ============================================
+        // ANIMAÇÃO DE SCROLL REVEAL
+        // ============================================
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Anima blocos de texto
+        document.querySelectorAll('.bloco-texto').forEach((bloco, index) => {
+            bloco.style.opacity = '0';
+            bloco.style.transform = 'translateY(30px)';
+            bloco.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+            observer.observe(bloco);
+        });
+        
+        // Anima boxes laterais
+        document.querySelectorAll('.box-imagem, .box-links').forEach((box, index) => {
+            box.style.opacity = '0';
+            box.style.transform = 'translateX(30px)';
+            box.style.transition = `opacity 0.6s ease ${index * 0.2}s, transform 0.6s ease ${index * 0.2}s`;
+            observer.observe(box);
+        });
+        
+        // ============================================
+        // INDICADOR DE PROGRESSO DE LEITURA
+        // ============================================
+        const progressBar = document.createElement('div');
+        progressBar.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: linear-gradient(90deg, #F20612, #FBAEE2);
+            z-index: 9999;
+            transition: width 0.2s ease;
+        `;
+        document.body.appendChild(progressBar);
+        
+        window.addEventListener('scroll', function() {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            progressBar.style.width = scrolled + '%';
+        });
+        
+        // ============================================
+        // EFEITO NOS LINKS DE ANEXOS
+        // ============================================
+        const linksAnexos = document.querySelectorAll('.lista-anexos a');
+        
+        linksAnexos.forEach(link => {
+            link.addEventListener('click', function(e) {
+                // Se for um link externo, adiciona um ícone visual
+                if (this.getAttribute('target') === '_blank') {
+                    this.style.transform = 'scale(1.05)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 200);
+                }
+            });
+        });
+        
+        // ============================================
+        // BOTÃO VOLTAR AO TOPO
+        // ============================================
+        const btnVoltarTopo = document.createElement('button');
+        btnVoltarTopo.innerHTML = '↑';
+        btnVoltarTopo.style.cssText = `
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #F20612;
+            color: white;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        `;
+        document.body.appendChild(btnVoltarTopo);
+        
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                btnVoltarTopo.style.opacity = '1';
+                btnVoltarTopo.style.transform = 'scale(1)';
+            } else {
+                btnVoltarTopo.style.opacity = '0';
+                btnVoltarTopo.style.transform = 'scale(0.8)';
+            }
+        });
+        
+        btnVoltarTopo.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        
+        btnVoltarTopo.addEventListener('mouseenter', function() {
+            this.style.backgroundColor = '#FBAEE2';
+            this.style.transform = 'scale(1.1)';
+        });
+        
+        btnVoltarTopo.addEventListener('mouseleave', function() {
+            this.style.backgroundColor = '#F20612';
+            if (window.pageYOffset > 300) {
+                this.style.transform = 'scale(1)';
+            }
+        });
+    </script>
 </body>
 </html>
