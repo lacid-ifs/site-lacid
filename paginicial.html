@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">	<title>Página Inicial - LACID</title>
+	<link rel="stylesheet" href="estilo.css">
+	<link rel="icon" href="logoLACID.png" type="image/x-icon">
+</head>
+<body>
+	<header class="navbar">
+        <nav>
+		<a href="#quem-somos">Quem somos</a>
+		<a href="#atividades">Atividades</a>
+		<a href="#membros">Membros Ativos</a>
+	</nav>
+		<button class="btn-aba-lateral">Contato</button>
+	</header>
+
+	<main>
+		<div class="hero-header">
+			<img src="img/logotituloLACID.png" alt="Logo LACID" class="logo-imagem">
+		<p class="subtitle">Liga Acadêmica de Ciência de Dados e Inteligência Artificial</p>
+		</div>
+		<section class="hero">
+            
+		<div class="hero-left">
+		<div class="carousel-container">
+			<div class="carousel-track" id="track">
+                        <img src="https://via.placeholder.com/800x500/1369D0/FFFFFF?text=Hackathon+LACID" class="slide" alt="Foto 1">
+                        <img src="https://via.placeholder.com/800x500/7280ED/FFFFFF?text=Reuniao+LACID" class="slide" alt="Foto 2">
+                        <img src="https://via.placeholder.com/800x500/FBAEE2/F20612?text=Projetos" class="slide" alt="Foto 3">
+		</div>
+		<div class="carousel-dots">
+			<span class="dot active" onclick="currentSlide(0)"></span>
+                        <span class="dot" onclick="currentSlide(1)"></span>
+                        <span class="dot" onclick="currentSlide(2)"></span>
+		</div>
+                </div>
+		</div>
+
+		<div class="hero-right">
+                <div class="noticias-card">
+			<div class="noticias-conteudo">
+                        <span class="noticias-tag">
+                            Notícias | <a href="noticias.html" class="link-ver-todas">Ver todas ></a>
+                        </span>
+                        <h2>PROCESSO SELETIVO DE NOVOS MEMBROS 2026/1</h2>
+                        <p class="noticias-texto">A Liga Acadêmica de Ciência de Dados e Inteligência Artificial (LACID), anuncia a abertura das inscrições para o processo seletivo de novos membros, conforme as normas estabelecidas em edital vigente. Voltada à formação complementar nas áreas de Ciência de Dados, Inteligência Artificial e tecnologias adjacentes, a Liga promove atividades de pesquisa aplicada, desenvolvimento de projetos tecnológicos, ações de extensão e divulgação científica.
+
+O processo seletivo é destinado a estudantes que tenham interesse em aprender na prática, desenvolver novas habilidades e participar de iniciativas inovadoras.
+
+Se você tem curiosidade por tecnologia, gosta de desafios e quer construir experiência em projetos reais, a LACID é uma oportunidade para crescer academicamente e colaborar com outros estudantes apaixonados por inovação. 🚀</p>
+		</div>
+			<a href="noticia-expandida.html" class="btn-saiba-mais">Saiba mais</a>
+                </div>
+		</div>
+
+	</section>
+
+        <section id="quem-somos" class="section-container">
+            <div class="quem-somos-wrapper">
+                <h2 class="titulo-quem-somos">
+                    QU<span class="letra-dupla">E</span>M SO<span class="letra-dupla">M</span>OS
+                </h2>
+                <div class="box-quem-somos">
+                    <p>A LACID é uma Liga Acadêmica voltada para a inovação, extensão e aprendizado de <strong>Ciência de Dados e Inteligência Artificial</strong>. Fundada, organizada e gerida por estudantes do Instituto Federal de Sergipe (IFS). Nosso objetivo é conectar discentes e pesquisadores para desenvolver soluções tecnológicas que impactem positivamente a comunidade local e externa :)</p>
+                </div>
+            </div>
+        </section>
+
+       <section id="atividades" class="section-container">
+    
+<section id="atividades" class="section-container">
+    <img src="img/atividades.png" alt="Atividades" class="titulo-atividades-img">
+   
+    <div class="grid-atividades">
+                <div class="card card-inovacao">
+                    <div class="icon-circle"></div>
+                    <h3>Inovação</h3>
+                    <p class="card-subtitulo">Projetos e Pesquisa</p>
+                    <p>Criamos soluções com IA e análise de dados para desafios reais, incentivando a experimentação e projetos.</p>
+                    <button class="btn-card-branco">Saiba mais</button>
+                </div>
+                <div class="card card-extensao">
+                    <div class="icon-circle"></div>
+                    <h3>Extensão</h3>
+                    <p class="card-subtitulo">Comunidade e Impacto</p>
+                    <p>Levamos conhecimento em dados e IA para além da universidade por meio de eventos educacionais.</p>
+                    <button class="btn-card-branco">Saiba mais</button>
+                </div>
+                <div class="card card-oficinas">
+                    <div class="icon-circle"></div>
+                    <h3>Oficinas</h3>
+                    <p class="card-subtitulo">Aprendizado Prático</p>
+                    <p>Oficinas mão na massa para aprender na prática ferramentas como Python e visualização de dados.</p>
+                    <button class="btn-card-branco">Saiba mais</button>
+                </div>
+                <div class="card card-minicursos">
+                    <div class="icon-circle"></div>
+                    <h3>Minicursos</h3>
+                    <p class="card-subtitulo">Formação Estruturada</p>
+                    <p>Minicursos organizados por módulos para formação progressiva em Ciência de Dados e IA.</p>
+                    <button class="btn-card-branco">Saiba mais</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        let currentIndex = 0;
+        const track = document.getElementById('track');
+        const dots = document.querySelectorAll('.dot');
+        function currentSlide(index) { currentIndex = index; updateCarousel(); }
+        function updateCarousel() {
+            track.style.transform = `translateX(-${currentIndex * (100 / dots.length)}%)`;
+            dots.forEach((dot, i) => dot.classList.toggle('active', i === currentIndex));
+        }
+        setInterval(() => { currentIndex = (currentIndex + 1) % dots.length; updateCarousel(); }, 5000);
+    </script>
+</body>
+</html>
