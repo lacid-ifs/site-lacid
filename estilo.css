@@ -475,13 +475,30 @@ body {
     font-family: 'AvantGarde-Bold', sans-serif;
     font-size: 1.2rem;
     color: var(--vermelho-lacid);
-    margin-bottom: 8px;
+    margin-bottom: 12px;
 }
 
-.cargo-membro {
+.linkedin-membro {
     font-family: 'AvantGarde-Medium', sans-serif;
-    font-size: 1rem;
-    color: var(--azul-texto-claro);
+    font-size: 0.95rem;
+    color: var(--bg-branco);
+    background: linear-gradient(135deg, #0077B5, #005885);
+    padding: 8px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.linkedin-membro:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 119, 181, 0.4);
+}
+
+.linkedin-membro i {
+    font-size: 1.1rem;
 }
 
 /* =========================================
