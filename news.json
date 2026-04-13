@@ -1,6 +1,64 @@
 {
   "news": [
     {
+      "id": "resultado-segunda-etapa-entrevista-2026-1",
+      "slug": "resultado-segunda-etapa-entrevista-2026-1",
+      "title": "Resultado da segunda etapa (entrevista) 2026/1",
+      "homeTitle": "RESULTADO DA SEGUNDA ETAPA (ENTREVISTA) 2026/1",
+      "detailTitleLines": [
+        "RESULTADO",
+        "DA SEGUNDA ETAPA",
+        "ENTREVISTA 2026/1"
+      ],
+      "homeSummary": "A LACID divulga o resultado da segunda etapa do processo seletivo 2026/1, referente às entrevistas. No documento oficial, os candidatos podem consultar o resultado desta fase e acompanhar as orientações para a continuidade do processo seletivo.\n\nConfira o arquivo completo para verificar sua situação e acompanhar as próximas etapas publicadas oficialmente pela Liga.",
+      "subtitle": "Confira o resultado oficial da segunda etapa (entrevista) do processo seletivo da LACID.",
+      "publishedAt": "2026-04-13",
+      "sections": [
+        {
+          "title": "Sobre o resultado da segunda etapa",
+          "paragraphs": [
+            "A LACID torna público o resultado da segunda etapa do processo seletivo 2026/1, correspondente às entrevistas. O documento oficial apresenta o desempenho dos candidatos nesta fase, servindo como referência para a continuidade das próximas etapas previstas."
+          ]
+        },
+        {
+          "title": "Orientação aos candidatos",
+          "paragraphs": [
+            "Os candidatos devem consultar atentamente o arquivo com o resultado da segunda etapa para verificar sua situação no processo seletivo e acompanhar as orientações oficiais publicadas pela Liga."
+          ]
+        },
+        {
+          "title": "Próximas etapas",
+          "paragraphs": [
+            "Após a divulgação do resultado das entrevistas, o processo seletivo segue conforme o cronograma oficial estabelecido pela Diretoria da LACID.",
+            "O acompanhamento das próximas fases deve ser feito pelos canais oficiais e pelos documentos publicados pela LACID."
+          ],
+          "list": [
+            "consulta do resultado da segunda etapa no documento oficial;",
+            "acompanhamento das próximas convocações e etapas;",
+            "atenção aos prazos e comunicados divulgados pela Liga."
+          ]
+        },
+        {
+          "title": "Informações adicionais",
+          "paragraphs": [
+            "Em caso de dúvidas, os candidatos poderão entrar em contato com a LACID pelo e-mail oficial lacid.ifs@gmail.com ou pelos canais institucionais da Liga."
+          ]
+        }
+      ],
+      "attachments": [
+        {
+          "label": "Resultado da segunda etapa - entrevista",
+          "href": "attachments/RESULTADO ENTREVISTA LACID.pdf",
+          "icon": "bi-file-earmark-pdf-fill"
+        },
+        {
+          "label": "Edital",
+          "href": "attachments/EDITAL N 012026 SELEÇÃO DE NOVOS MEMBROS LACID (1).pdf",
+          "icon": "bi-journal-text"
+        }
+      ]
+    },
+    {
       "id": "resultado-primeira-etapa-2026-1",
       "slug": "resultado-primeira-etapa-2026-1",
       "title": "Resultado da primeira etapa 2026/1",
