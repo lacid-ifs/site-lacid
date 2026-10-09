@@ -1,0 +1,21 @@
+# Dependências
+node_modules/
+.pnpm-store/
+
+# Build
+dist/
+
+# IDE/Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS
+.DS_Store
+Thumbs.db

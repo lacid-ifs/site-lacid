@@ -3,40 +3,38 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">	<title>Página Inicial - LACID</title>
-	<link rel="stylesheet" href="estilo.css">
-	<link rel="icon" href="logoLACID.png" type="image/x-icon">
+	<link rel="stylesheet" href="src/css/style.css">
+	<link rel="icon" href="img/logoLACID.webp" type="image/x-icon">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-	<script src="script.js" defer></script>
-    <script src="news.js" defer></script>
+    <script type="module" src="/src/js/main.js" defer></script>
+    <script type="module" src="/src/js/news.js" defer></script>
 </head>
 <body>
 	<header class="navbar">
         <nav>
 		<a href="#quem-somos">Quem somos</a>
 		<a href="#atividades">Atividades</a>
-		<!-- <a href="#membros">Membros Ativos</a> -->
+		<a href="#membros">Nossa Equipe</a>
 	</nav>
 		<button class="btn-aba-lateral"><i class="bi bi-envelope-fill"></i> Contato</button>
 	</header>
 
+
 	<main>
-		<div class="hero-header">
-			<img src="img/logotituloLACID.png" alt="Logo LACID" class="logo-imagem">
-		<p class="subtitle">Liga Acadêmica de Ciência de Dados e Inteligência Artificial</p>
-		</div>
+		<header class="hero-header">
+			<h1 class="logo-titulo">
+                <img src="img/logotituloLACID.webp" alt="LACID - Liga Acadêmica de Ciência de Dados e Inteligência Artificial" class="logo-imagem">
+                <span class="sr-only">LACID - Liga Acadêmica de Ciência de Dados e Inteligência Artificial</span>
+            </h1>
+		    <p class="subtitle">Liga Acadêmica de Ciência de Dados e Inteligência Artificial</p>
+		</header>
 		<section class="hero">
-            
 		<div class="hero-left">
 		<div class="carousel-container">
 			<div class="carousel-track" id="track">
-                        <img src="img/IMG-20251204-WA0013.jpg" class="slide" alt="Eventos LACID" loading="lazy">
-                        <img src="img/IMG-20251204-WA0030.jpg" class="slide" alt="Atividades LACID" loading="lazy">
-                        <img src="img/IMG-20251220-WA0007.jpg" class="slide" alt="Projetos LACID" loading="lazy">
+                        <img src="img/IMG-20251204-WA0013.webp" class="slide" alt="Eventos LACID" loading="lazy">
 		</div>
 		<div class="carousel-dots">
-			<span class="dot active" onclick="currentSlide(0)"></span>
-                        <span class="dot" onclick="currentSlide(1)"></span>
-                        <span class="dot" onclick="currentSlide(2)"></span>
 		</div>
                 </div>
 		</div>
@@ -60,274 +58,75 @@
         </section>
 
         <section id="atividades" class="section-container">
-            <img src="img/atividades.png" alt="Atividades" class="titulo-atividades-img">
+            <h2 class="section-title">
+                AT<span class="letra-dupla">I</span>VIDAD<span class="letra-dupla">E</span>S
+            </h2>
    
             <div class="grid-atividades">
-                <div class="card card-inovacao">
+                <article class="card card-inovacao">
                     <div class="icon-circle"><i class="bi bi-lightbulb-fill"></i></div>
                     <h3>Inovação</h3>
                     <p class="card-subtitulo">Projetos e Pesquisa</p>
                     <p>Criamos soluções com IA e análise de dados para desafios reais, incentivando a experimentação e projetos.</p>
                     <button class="btn-card-branco"><i class="bi bi-plus-circle"></i> Saiba mais</button>
-                </div>
-                <div class="card card-extensao">
+                </article>
+                <article class="card card-extensao">
                     <div class="icon-circle"><i class="bi bi-people-fill"></i></div>
                     <h3>Extensão</h3>
                     <p class="card-subtitulo">Comunidade e Impacto</p>
                     <p>Levamos conhecimento em dados e IA para além da universidade por meio de eventos educacionais.</p>
                     <button class="btn-card-branco"><i class="bi bi-plus-circle"></i> Saiba mais</button>
-                </div>
-                <div class="card card-oficinas">
+                </article>
+                <article class="card card-oficinas">
                     <div class="icon-circle"><i class="bi bi-tools"></i></div>
                     <h3>Oficinas</h3>
                     <p class="card-subtitulo">Aprendizado Prático</p>
                     <p>Oficinas mão na massa para aprender na prática ferramentas como Python e visualização de dados.</p>
                     <button class="btn-card-branco"><i class="bi bi-plus-circle"></i> Saiba mais</button>
-                </div>
-                <div class="card card-minicursos">
+                </article>
+                <article class="card card-minicursos">
                     <div class="icon-circle"><i class="bi bi-book-fill"></i></div>
                     <h3>Minicursos</h3>
                     <p class="card-subtitulo">Formação Estruturada</p>
                     <p>Minicursos organizados por módulos para formação progressiva em Ciência de Dados e IA.</p>
                     <button class="btn-card-branco"><i class="bi bi-plus-circle"></i> Saiba mais</button>
-                </div>
+                </article>
             </div>
         </section>
 
-        <!-- <section id="membros" class="section-container">
-            <h2 class="titulo-secao-membros">MEMBROS ATIVOS</h2>
-            <div class="grid-membros">
-                <div class="card-membro">
-                    <div class="foto-membro"></div>
-                    <h3 class="nome-membro">Nome do Membro</h3>
-                    <a href="https://linkedin.com/in/usuario" target="_blank" class="linkedin-membro">
-                        <i class="bi bi-linkedin"></i> LinkedIn
-                    </a>
-                </div>
-                <div class="card-membro">
-                    <div class="foto-membro"></div>
-                    <h3 class="nome-membro">Nome do Membro</h3>
-                    <a href="https://linkedin.com/in/usuario" target="_blank" class="linkedin-membro">
-                        <i class="bi bi-linkedin"></i> LinkedIn
-                    </a>
-                </div>
-                <div class="card-membro">
-                    <div class="foto-membro"></div>
-                    <h3 class="nome-membro">Nome do Membro</h3>
-                    <a href="https://linkedin.com/in/usuario" target="_blank" class="linkedin-membro">
-                        <i class="bi bi-linkedin"></i> LinkedIn
-                    </a>
-                </div>
-                <div class="card-membro">
-                    <div class="foto-membro"></div>
-                    <h3 class="nome-membro">Nome do Membro</h3>
-                    <a href="https://linkedin.com/in/usuario" target="_blank" class="linkedin-membro">
-                        <i class="bi bi-linkedin"></i> LinkedIn
-                    </a>
-                </div>
-                <div class="card-membro">
-                    <div class="foto-membro"></div>
-                    <h3 class="nome-membro">Nome do Membro</h3>
-                    <a href="https://linkedin.com/in/usuario" target="_blank" class="linkedin-membro">
-                        <i class="bi bi-linkedin"></i> LinkedIn
-                    </a>
-                </div>
-                <div class="card-membro">
-                    <div class="foto-membro"></div>
-                    <h3 class="nome-membro">Nome do Membro</h3>
-                    <a href="https://linkedin.com/in/usuario" target="_blank" class="linkedin-membro">
-                        <i class="bi bi-linkedin"></i> LinkedIn
-                    </a>
+        <section id="membros" class="section-container style-playful">
+            <div class="equipe-wrapper">
+                <h2 class="titulo-quem-somos">
+                    NO<span class="letra-dupla">S</span>SA EQU<span class="letra-dupla">I</span>PE
+                </h2>
+                <div class="grid-membros">
+                    <!-- Membros serão renderizados dinamicamente via JS -->
                 </div>
             </div>
-        </section> -->
+        </section>
     </main>
 
-    <script>
-        // ============================================
-        // CARROSSEL DE IMAGENS
-        // ============================================
-        let currentIndex = 0;
-        let autoPlayInterval;
-        const track = document.getElementById('track');
-        const dots = document.querySelectorAll('.dot');
-        const carouselContainer = document.querySelector('.carousel-container');
-        
-        function currentSlide(index) { 
-            currentIndex = index; 
-            updateCarousel(); 
-            resetAutoPlay();
-        }
-        
-        function updateCarousel() {
-            track.style.transform = `translateX(-${currentIndex * (100 / dots.length)}%)`;
-            dots.forEach((dot, i) => dot.classList.toggle('active', i === currentIndex));
-        }
-        
-        function nextSlide() {
-            currentIndex = (currentIndex + 1) % dots.length;
-            updateCarousel();
-        }
-        
-        function startAutoPlay() {
-            autoPlayInterval = setInterval(nextSlide, 5000);
-        }
-        
-        function stopAutoPlay() {
-            clearInterval(autoPlayInterval);
-        }
-        
-        function resetAutoPlay() {
-            stopAutoPlay();
-            startAutoPlay();
-        }
-        
-        // Pausa ao passar o mouse sobre o carrossel
-        carouselContainer.addEventListener('mouseenter', stopAutoPlay);
-        carouselContainer.addEventListener('mouseleave', startAutoPlay);
-        
-        // Inicia o autoplay
-        startAutoPlay();
-        
-        // ============================================
-        // NAVBAR ANIMADA NO SCROLL
-        // ============================================
-        const navbar = document.querySelector('.navbar');
-        
-        window.addEventListener('scroll', function() {
-            if (window.scrollY > 100) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-        
-        // ============================================
-        // SMOOTH SCROLL PARA NAVEGAÇÃO
-        // ============================================
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    const offsetTop = target.offsetTop - 80; // 80px para compensar navbar
-                    window.scrollTo({
-                        top: offsetTop,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-        
-        // ============================================
-        // SCROLL REVEAL ANIMATION
-        // ============================================
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-        
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-        
-        // Aplica animação aos cards
-        document.querySelectorAll('.card').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(30px)';
-            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(card);
-        });
-        
-        // ============================================
-        // BOTÃO CONTATO - TOAST NOTIFICATION
-        // ============================================
-        const btnContato = document.querySelector('.btn-aba-lateral');
-        
-        btnContato.addEventListener('click', function(e) {
-            e.preventDefault();
-            const icone = '<i class="bi bi-envelope-at-fill" style="margin-right: 8px;"></i>';
-            const mensagem = document.createElement('div');
-            mensagem.innerHTML = icone + 'Entre em contato: lacid.ifs@gmail.com';
-            mensagem.style.cssText = `
-                position: fixed;
-                top: 100px;
-                right: 30px;
-                background: #1369D0;
-                color: white;
-                padding: 20px 30px;
-                border-radius: 20px;
-                font-family: 'AvantGarde-Medium', sans-serif;
-                font-size: 1rem;
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-                z-index: 10000;
-                animation: slideInRight 0.5s ease, fadeOut 0.5s ease 3.5s forwards;
-                display: flex;
-                align-items: center;
-            `;
-            document.body.appendChild(mensagem);
-            
-            setTimeout(() => {
-                mensagem.remove();
-            }, 4000);
-            // Aqui você pode adicionar a lógica real de abertura de modal/sidebar
-        });
-        
-        // ============================================
-        // CARDS DE ATIVIDADES - INTERAÇÃO
-        // ============================================
-        const cardsAtividades = document.querySelectorAll('.card');
-        
-        cardsAtividades.forEach(card => {
-            const btnSaibaMais = card.querySelector('.btn-card-branco');
-            
-            if (btnSaibaMais) {
-                btnSaibaMais.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const tituloCard = card.querySelector('h3').textContent;
-                    const icone = '<i class="bi bi-info-circle-fill" style="margin-right: 8px;"></i>';
-                    const mensagem = document.createElement('div');
-                    mensagem.innerHTML = icone + `Em breve: Mais informações sobre ${tituloCard}!`;
-                    mensagem.style.cssText = `
-                        position: fixed;
-                        top: 100px;
-                        right: 30px;
-                        background: #1369D0;
-                        color: white;
-                        padding: 20px 30px;
-                        border-radius: 20px;
-                        font-family: 'AvantGarde-Medium', sans-serif;
-                        font-size: 1rem;
-                        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-                        z-index: 10000;
-                        animation: slideInRight 0.5s ease, fadeOut 0.5s ease 3.5s forwards;
-                        display: flex;
-                        align-items: center;
-                    `;
-                    document.body.appendChild(mensagem);
-                    
-                    setTimeout(() => {
-                        mensagem.remove();
-                    }, 4000);
-                });
-            }
-        });
-        
-        // // ============================================
-        // // CONTADOR DE MEMBROS (ANIMAÇÃO)
-        // // ============================================
-        // const cardsMembros = document.querySelectorAll('.card-membro');
-        // const numeroMembros = cardsMembros.length;
-        
-        // // Adiciona um contador animado (opcional)
-        // if (numeroMembros > 0) {
-        //     console.log(`LACID tem ${numeroMembros} membros ativos!`);
-        // }
-    </script>
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="img/logoLACID.webp" alt="Logo LACID" class="footer-logo-img">
+                <p>Liga Acadêmica de Ciência de Dados e IA - IFS</p>
+            </div>
+            <div class="footer-links">
+                <nav aria-label="Navegação do rodapé">
+                    <a href="#quem-somos">Quem somos</a>
+                    <a href="#atividades">Atividades</a>
+                    <a href="#membros">Nossa Equipe</a>
+                </nav>
+            </div>
+            <div class="footer-social">
+                <a href="https://www.instagram.com/lacid.ifs/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 LACID - Instituto Federal de Sergipe. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+    <script type="module" src="/src/js/membros.js"></script>
 </body>
 </html>

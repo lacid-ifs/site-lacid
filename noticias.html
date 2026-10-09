@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notícias - LACID</title>
-    <link rel="stylesheet" href="estilo.css">
-    <link rel="icon" href="logoLACID.png" type="image/x-icon">
+    <link rel="stylesheet" href="src/css/style.css">
+    <link rel="icon" href="img/logoLACID.webp" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <script src="script.js" defer></script>
-    <script src="news.js" defer></script>
+    <script src="src/js/main.js" type="module" defer></script>
+    <script src="src/js/news.js" type="module" defer></script>
 </head>
 <body>
 
@@ -36,20 +36,25 @@
                 <h3 class="titulo-filtro">Filtrar por data</h3>
                 
                 <div class="calendario-box">
-                    <p class="calendario-placeholder">table</p>
+                    <div class="calendario-header">
+                        <button class="btn-mes" id="prev-mes"><i class="bi bi-chevron-left"></i></button>
+                        <span class="nome-mes" id="mes-atual">Maio 2026</span>
+                        <button class="btn-mes" id="next-mes"><i class="bi bi-chevron-right"></i></button>
+                    </div>
                     <table class="tabela-mes">
                         <thead>
                             <tr>
-                                <th>Su</th><th>Mo</th><th>Tu</th><th>We</th><th>Th</th><th>Fr</th><th>Sa</th>
+                                <th>D</th><th>S</th><th>T</th><th>Q</th><th>Q</th><th>S</th><th>S</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>15</td><td>16</td><td>17</td><td>18</td><td>19</td><td>20</td><td class="dia-ativo">21</td>
-                            </tr>
+                        <tbody id="calendario-corpo">
+                            <!-- Gerado dinamicamente via JS -->
                         </tbody>
                     </table>
                 </div>
+                <button class="btn-limpar-filtros">
+                    <i class="bi bi-x-circle"></i> Limpar Filtros
+                </button>
             </div>
 
         </aside>
