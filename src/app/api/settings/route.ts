@@ -1,5 +1,6 @@
 import { handle, ok, readJson, requireUser } from "@/lib/api";
 import { db } from "@/lib/db";
+import { revalidateSite } from "@/lib/revalidate";
 import { settingsSchema } from "@/lib/schemas";
 
 /** GET /api/settings -> { chave: valor } (publico) */
@@ -17,6 +18,7 @@ export const PUT = handle(async (req: Request) => {
       db.siteSetting.upsert({ where: { key }, create: { key, value }, update: { value } }),
     ),
   );
+  revalidateSite();
   const rows = await db.siteSetting.findMany();
   return ok(Object.fromEntries(rows.map((r) => [r.key, r.value])));
 });

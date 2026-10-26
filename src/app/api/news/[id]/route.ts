@@ -1,6 +1,7 @@
 import { currentUser, HttpError, handle, ok, readJson, requireUser, type SessionUser } from "@/lib/api";
 import { db } from "@/lib/db";
 import { postInclude, uniqueSlug } from "@/lib/posts";
+import { revalidateSite } from "@/lib/revalidate";
 import { postSchema } from "@/lib/schemas";
 
 type Ctx = { params: Promise<{ id: string }> };
@@ -53,6 +54,7 @@ export const PATCH = handle(async (req: Request, ctx: Ctx) => {
     data: { ...data, slug },
     include: postInclude,
   });
+  revalidateSite();
   return ok(updated);
 });
 
@@ -64,5 +66,6 @@ export const DELETE = handle(async (_req: Request, ctx: Ctx) => {
   assertCanModify(user, post);
 
   await db.post.delete({ where: { id: post.id } });
+  revalidateSite();
   return ok({ ok: true });
 });

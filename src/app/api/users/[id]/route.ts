@@ -2,6 +2,7 @@ import bcrypt from "bcryptjs";
 import { HttpError, handle, ok, readJson, requireUser } from "@/lib/api";
 import { db } from "@/lib/db";
 import { publicUserFields } from "@/lib/posts";
+import { revalidateSite } from "@/lib/revalidate";
 import { userCreateSchema } from "@/lib/schemas";
 
 type Ctx = { params: Promise<{ id: string }> };
@@ -27,6 +28,7 @@ export const PATCH = handle(async (req: Request, ctx: Ctx) => {
     data: { ...data, password: data.password ? await bcrypt.hash(data.password, 12) : undefined },
     select: publicUserFields,
   });
+  revalidateSite(); // perfil do autor aparece nas noticias
   return ok(user);
 });
 

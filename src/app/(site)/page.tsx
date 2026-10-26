@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { ActivityCard } from "@/components/site/ActivityCard";
 import { Carousel } from "@/components/site/Carousel";
-import { Navbar } from "@/components/site/Navbar";
 import { Reveal } from "@/components/site/Reveal";
 import { formatDateTime, getHomeData } from "@/lib/content";
 
@@ -16,8 +15,6 @@ export default async function HomePage() {
 
   return (
     <>
-      <Navbar contactEmail={settings.contactEmail} hasEvents={events.length > 0} />
-
       <main>
         <header className="hero-header">
           <h1 className="logo-titulo">
@@ -174,33 +171,6 @@ export default async function HomePage() {
           </div>
         </section>
       </main>
-
-      <footer className="main-footer">
-        <div className="footer-content">
-          <div className="footer-logo">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/img/logoLACID.webp" alt="Logo LACID" className="footer-logo-img" />
-            <p>{settings.footerText}</p>
-          </div>
-          <div className="footer-links">
-            <nav aria-label="Navegação do rodapé">
-              <a href="#quem-somos">Quem somos</a>
-              <a href="#atividades">Atividades</a>
-              <a href="#membros">Nossa Equipe</a>
-            </nav>
-          </div>
-          <div className="footer-social">
-            {settings.instagramUrl && (
-              <a href={settings.instagramUrl} target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                <i className="bi bi-instagram" />
-              </a>
-            )}
-          </div>
-        </div>
-        <div className="footer-bottom">
-          <p>&copy; {new Date().getFullYear()} LACID - Instituto Federal de Sergipe. Todos os direitos reservados.</p>
-        </div>
-      </footer>
 
       <Reveal selector=".card, .card-membro, .card-evento" />
     </>

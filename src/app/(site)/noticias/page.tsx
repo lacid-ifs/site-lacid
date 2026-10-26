@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { NewsBrowser } from "@/components/site/NewsBrowser";
 import { formatDateLong, getPublishedPosts } from "@/lib/content";
 
@@ -12,11 +11,6 @@ export default async function NoticiasPage() {
   return (
     <>
       <header className="header-noticias">
-        <div className="breadcrumb">
-          <Link href="/" aria-label="Página Inicial" className="icone-home">
-            <i className="bi bi-house-door-fill" />
-          </Link>
-        </div>
         <h1 className="titulo-pagina">NOTÍCIAS</h1>
       </header>
 

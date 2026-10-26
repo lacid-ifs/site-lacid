@@ -1,6 +1,7 @@
 import type { Role } from "@prisma/client";
 import type { ZodObject, ZodRawShape } from "zod";
 import { currentUser, HttpError, handle, ok, readJson, requireUser } from "@/lib/api";
+import { revalidateSite } from "@/lib/revalidate";
 
 type Delegate = {
   findMany(args?: object): Promise<unknown[]>;
@@ -42,7 +43,9 @@ export function crud({ delegate, schema, write, publicWhere, orderBy }: Options)
       POST: handle(async (req: Request) => {
         await requireUser(write);
         const data = schema.parse(await readJson(req));
-        return ok(await delegate.create({ data }), 201);
+        const created = await delegate.create({ data });
+        revalidateSite();
+        return ok(created, 201);
       }),
     },
     item: {
@@ -62,12 +65,15 @@ export function crud({ delegate, schema, write, publicWhere, orderBy }: Options)
         await requireUser(write);
         const { id } = await ctx.params;
         const data = schema.partial().parse(await readJson(req));
-        return ok(await delegate.update({ where: { id }, data }));
+        const updated = await delegate.update({ where: { id }, data });
+        revalidateSite();
+        return ok(updated);
       }),
       DELETE: handle(async (_req: Request, ctx: Ctx) => {
         await requireUser(write);
         const { id } = await ctx.params;
         await delegate.delete({ where: { id } });
+        revalidateSite();
         return ok({ ok: true });
       }),
     },

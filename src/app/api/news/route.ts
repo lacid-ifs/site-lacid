@@ -2,6 +2,7 @@ import type { Prisma } from "@prisma/client";
 import { currentUser, handle, ok, readJson, requireUser } from "@/lib/api";
 import { db } from "@/lib/db";
 import { postInclude, publicPostWhere, uniqueSlug } from "@/lib/posts";
+import { revalidateSite } from "@/lib/revalidate";
 import { postSchema } from "@/lib/schemas";
 
 /**
@@ -44,5 +45,6 @@ export const POST = handle(async (req: Request) => {
     data: { ...data, slug, status, authorId: user.id, publishedAt: data.publishedAt ?? new Date() },
     include: postInclude,
   });
+  revalidateSite();
   return ok(post, 201);
 });
