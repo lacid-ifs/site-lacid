@@ -32,6 +32,14 @@ export default async function Page() {
             ],
             column: "text",
           },
+          {
+            name: "memberId",
+            label: "Membro da LACID vinculado",
+            type: "select",
+            optionsFrom: { url: "/api/members", labelKey: "name", emptyLabel: "Nenhum (usar dados do usuário)" },
+            hint: "Nome, cargo, curso e foto do membro aparecem nas notícias postadas por este usuário.",
+            column: "text",
+          },
           { name: "active", label: "Ativo", type: "checkbox", column: "badge" },
         ]}
       />

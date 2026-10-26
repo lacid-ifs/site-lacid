@@ -24,8 +24,13 @@ export default async function NoticiasPage() {
         items={posts.map((p) => ({
           slug: p.slug,
           title: p.title,
+          subtitle: p.subtitle,
           day: p.day,
           label: formatDateLong(p.publishedAt),
+          coverUrl: p.coverUrl,
+          sections: p.sections,
+          attachments: p.attachments,
+          author: p.postedBy,
         }))}
       />
     </>

@@ -2,8 +2,28 @@ import type { Prisma } from "@prisma/client";
 import { db } from "@/lib/db";
 
 export const postInclude = {
-  author: { select: { id: true, name: true } },
+  author: {
+    select: {
+      id: true,
+      name: true,
+      role: true,
+      member: { select: { name: true, role: true, course: true, photoUrl: true } },
+    },
+  },
 } satisfies Prisma.PostInclude;
+
+const ROLE_LABEL = { ADMIN: "Administrador", EDITOR: "Editor", AUTHOR: "Autor" } as const;
+
+/** Dados do postador: se o usuario esta vinculado a um membro, vale o perfil do membro. */
+export function authorView(author: {
+  name: string;
+  role: keyof typeof ROLE_LABEL;
+  member: { name: string; role: string; course: string; photoUrl: string } | null;
+}) {
+  return author.member
+    ? { name: author.member.name, role: author.member.role, course: author.member.course, photoUrl: author.member.photoUrl }
+    : { name: author.name, role: ROLE_LABEL[author.role], course: "", photoUrl: "/img/default_avatar.png" };
+}
 
 export function slugify(text: string) {
   return text
@@ -44,4 +64,5 @@ export const publicUserFields = {
   role: true,
   active: true,
   createdAt: true,
+  memberId: true,
 } as const;

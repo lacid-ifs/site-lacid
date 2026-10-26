@@ -99,6 +99,7 @@ export const userCreateSchema = z.object({
   password: z.string().min(8).max(100),
   role: z.enum(["ADMIN", "EDITOR", "AUTHOR"]).default("AUTHOR"),
   active: z.boolean().default(true),
+  memberId: z.preprocess((v) => (v === "" ? null : v), z.string().nullable()).optional(),
 });
 
 export const settingsSchema = z.record(z.string().regex(/^[a-zA-Z0-9_.-]{1,60}$/), z.union([z.string().max(5000), z.number(), z.boolean()]));

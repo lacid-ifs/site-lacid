@@ -28,6 +28,9 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   posts     Post[]
+  // Membro da LACID vinculado: nome, cargo, curso e foto dele aparecem nas postagens
+  memberId  String?  @unique
+  member    Member?  @relation(fields: [memberId], references: [id], onDelete: SetNull)
 }
 
 model Post {
@@ -62,6 +65,7 @@ model Member {
   lattes    String?
   order     Int     @default(0)
   active    Boolean @default(true)
+  user      User?
 }
 
 model CarouselSlide {

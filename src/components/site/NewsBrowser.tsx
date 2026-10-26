@@ -3,9 +3,21 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 
-export type NewsListItem = { slug: string; title: string; day: string; label: string };
+export type NewsListItem = {
+  slug: string;
+  title: string;
+  subtitle: string;
+  day: string;
+  label: string;
+  coverUrl: string | null;
+  sections: { title: string; paragraphs?: string[]; list?: string[] }[];
+  attachments: { label: string; href: string; icon?: string }[];
+  author: { name: string; role: string; course: string; photoUrl: string };
+};
 
 const WEEKDAYS = ["D", "S", "T", "Q", "Q", "S", "S"];
+
+const safeHref = (href: string) => (/^https?:\/\//i.test(href) || href.startsWith("/") ? href : "#");
 
 export function NewsBrowser({ items }: { items: NewsListItem[] }) {
   const [query, setQuery] = useState("");
@@ -20,12 +32,6 @@ export function NewsBrowser({ items }: { items: NewsListItem[] }) {
     const q = query.toLowerCase().trim();
     return items.filter((i) => (!q || i.title.toLowerCase().includes(q)) && (!selectedDay || i.day === selectedDay));
   }, [items, query, selectedDay]);
-
-  const groups = useMemo(() => {
-    const map = new Map<string, NewsListItem[]>();
-    for (const item of filtered) map.set(item.label, [...(map.get(item.label) ?? []), item]);
-    return Array.from(map.entries());
-  }, [filtered]);
 
   // Calendario: do primeiro mes com noticia (ou fev/2026) ate o mes atual
   const earliest = useMemo(() => {
@@ -49,20 +55,57 @@ export function NewsBrowser({ items }: { items: NewsListItem[] }) {
 
   return (
     <div className="layout-duas-colunas">
-      <main className="coluna-lista">
-        {groups.map(([label, list]) => (
-          <section key={label} className="grupo-noticias">
-            <h2 className="data-noticia">{label}</h2>
-            {list.map((item) => (
-              <article key={item.slug} className="item-noticia">
-                <Link href={`/noticias/${item.slug}`} className="link-noticia">
-                  {item.title}
-                </Link>
-              </article>
-            ))}
-          </section>
+      <main className="coluna-lista feed">
+        {filtered.map((item) => (
+          <article key={item.slug} className="feed-post">
+            <header className="feed-autor">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={item.author.photoUrl} alt="" className="feed-avatar" />
+              <div className="feed-autor-info">
+                <strong>{item.author.name}</strong>
+                <span>{[item.author.role, item.author.course].filter(Boolean).join(" · ")}</span>
+              </div>
+              <time className="feed-data">{item.label}</time>
+            </header>
+
+            {item.coverUrl && (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img src={item.coverUrl} alt={item.title} className="feed-capa" loading="lazy" />
+            )}
+
+            <div className="feed-corpo">
+              <h2 className="feed-titulo">
+                <Link href={`/noticias/${item.slug}`}>{item.title}</Link>
+              </h2>
+              {item.subtitle && <p className="feed-subtitulo">{item.subtitle}</p>}
+              {item.sections.map((sec, i) => (
+                <section key={i} className="feed-secao">
+                  <h3>{sec.title}</h3>
+                  {(sec.paragraphs ?? []).map((p, j) => (
+                    <p key={j}>{p}</p>
+                  ))}
+                  {sec.list && sec.list.length > 0 && (
+                    <ul>
+                      {sec.list.map((li, j) => (
+                        <li key={j}>{li}</li>
+                      ))}
+                    </ul>
+                  )}
+                </section>
+              ))}
+              {item.attachments.length > 0 && (
+                <div className="feed-anexos">
+                  {item.attachments.map((a, i) => (
+                    <a key={i} href={safeHref(a.href)} target="_blank" rel="noopener noreferrer">
+                      <i className={`bi ${a.icon || "bi-file-earmark-text"}`} /> {a.label}
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
+          </article>
         ))}
-        {groups.length === 0 && <div className="mensagem-sem-resultados">Nenhuma notícia encontrada.</div>}
+        {filtered.length === 0 && <div className="mensagem-sem-resultados">Nenhuma notícia encontrada.</div>}
       </main>
 
       <aside className="coluna-filtros">

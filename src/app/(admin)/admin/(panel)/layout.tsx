@@ -1,5 +1,7 @@
 import { redirect } from "next/navigation";
 import { auth, signOut } from "@/lib/auth";
+import { db } from "@/lib/db";
+import { authorView } from "@/lib/posts";
 import { NavLink } from "@/components/admin/NavLink";
 
 const ROLE_LABEL = { ADMIN: "Administrador", EDITOR: "Editor", AUTHOR: "Autor" } as const;
@@ -20,7 +22,13 @@ const ITEMS: Item[] = [
 export default async function PanelLayout({ children }: { children: React.ReactNode }) {
   const session = await auth();
   if (!session?.user) redirect("/admin/login");
-  const { role, name } = session.user;
+  const { role } = session.user;
+  const me = await db.user.findUnique({
+    where: { id: session.user.id },
+    select: { name: true, role: true, member: { select: { name: true, role: true, course: true, photoUrl: true } } },
+  });
+  if (!me) redirect("/admin/login");
+  const profile = authorView(me);
 
   return (
     <div className="adm-shell">
@@ -40,10 +48,14 @@ export default async function PanelLayout({ children }: { children: React.ReactN
           </a>
         </nav>
         <div className="adm-user">
-          <div>
-            {name}
-            <br />
-            <small>{ROLE_LABEL[role]}</small>
+          <div className="adm-profile">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={profile.photoUrl} alt="" />
+            <div>
+              {profile.name}
+              <br />
+              <small>{profile.role !== ROLE_LABEL[role] ? `${profile.role} · ` : ""}{ROLE_LABEL[role]}</small>
+            </div>
           </div>
           <form
             action={async () => {

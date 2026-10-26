@@ -37,14 +37,6 @@ export default async function Dashboard() {
           </>
         )}
       </div>
-      <div className="adm-card">
-        <h2 style={{ marginBottom: 8 }}>Seu nível de acesso</h2>
-        <p>
-          {user.role === "ADMIN" && "Administrador: gerencia todo o conteúdo, os textos do site e os usuários."}
-          {user.role === "EDITOR" && "Editor: gerencia todo o conteúdo e publica notícias, mas não gerencia usuários."}
-          {user.role === "AUTHOR" && "Autor: escreve notícias e as edita enquanto forem rascunho. Um editor faz a publicação."}
-        </p>
-      </div>
     </>
   );
 }

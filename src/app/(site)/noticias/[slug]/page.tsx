@@ -49,9 +49,20 @@ export default async function NoticiaPage({ params }: Props) {
               <em>{post.subtitle}</em>
             </p>
           )}
-          <p className="noticia-meta">
-            {formatDateLong(post.publishedAt)} · por {post.author.name}
-          </p>
+          <div className="author-box">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={post.postedBy.photoUrl} alt="" />
+            <div>
+              <strong>{post.postedBy.name}</strong>
+              <span>
+                {[post.postedBy.role, post.postedBy.course].filter(Boolean).join(" · ")} · {formatDateLong(post.publishedAt)}
+              </span>
+            </div>
+          </div>
+          {post.coverUrl && (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={post.coverUrl} alt="" className="noticia-capa" />
+          )}
 
           {post.sections.map((section, i) => (
             <section key={i} className="bloco-texto">

@@ -1,6 +1,6 @@
 import { cache } from "react";
 import { db } from "@/lib/db";
-import { dayKey, postInclude, publicPostWhere } from "@/lib/posts";
+import { authorView, dayKey, postInclude, publicPostWhere } from "@/lib/posts";
 
 export type Section = { title: string; paragraphs?: string[]; list?: string[] };
 export type Attachment = { label: string; href: string; icon?: string };
@@ -23,7 +23,13 @@ export const getPublishedPosts = cache(async () => {
     include: postInclude,
     orderBy: { publishedAt: "desc" },
   });
-  return posts.map((p) => ({ ...p, day: dayKey(p.publishedAt) }));
+  return posts.map((p) => ({
+    ...p,
+    day: dayKey(p.publishedAt),
+    sections: p.sections as unknown as Section[],
+    attachments: p.attachments as unknown as Attachment[],
+    postedBy: authorView(p.author),
+  }));
 });
 
 export async function getPublishedPost(slug: string) {
@@ -36,6 +42,7 @@ export async function getPublishedPost(slug: string) {
     ...post,
     sections: post.sections as unknown as Section[],
     attachments: post.attachments as unknown as Attachment[],
+    postedBy: authorView(post.author),
   };
 }
 

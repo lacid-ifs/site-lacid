@@ -359,3 +359,17 @@ textarea:focus {
 .login-card h1 {
   text-align: center;
 }
+
+.adm-profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.adm-profile img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #fff;
+  flex-shrink: 0;
+}

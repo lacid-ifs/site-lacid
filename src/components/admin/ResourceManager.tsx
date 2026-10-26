@@ -9,6 +9,8 @@ export type Field = {
   label: string;
   type: "text" | "email" | "password" | "textarea" | "number" | "checkbox" | "select" | "image" | "datetime";
   options?: { value: string; label: string }[];
+  /** Opcoes carregadas de um endpoint (ex.: membros). Inclui uma opcao vazia. */
+  optionsFrom?: { url: string; labelKey: string; emptyLabel: string };
   required?: boolean;
   full?: boolean;
   hint?: string;
@@ -40,6 +42,22 @@ export function ResourceManager({ title, endpoint, fields, singular, selfId }: P
   const [editing, setEditing] = useState<Row | "new" | null>(null);
   const [values, setValues] = useState(emptyValues(fields));
   const [saving, setSaving] = useState(false);
+  const [remote, setRemote] = useState<Record<string, { value: string; label: string }[]>>({});
+
+  useEffect(() => {
+    for (const f of fields) {
+      const src = f.optionsFrom;
+      if (!src) continue;
+      api<Row[]>(src.url)
+        .then((list) =>
+          setRemote((r) => ({
+            ...r,
+            [f.name]: [{ value: "", label: src.emptyLabel }, ...list.map((x) => ({ value: x.id, label: String(x[src.labelKey]) }))],
+          })),
+        )
+        .catch(() => undefined);
+    }
+  }, [fields]);
 
   const load = useCallback(async () => {
     try {
@@ -140,7 +158,7 @@ export function ResourceManager({ title, endpoint, fields, singular, selfId }: P
                     <textarea value={String(v)} required={f.required} onChange={(e) => set(e.target.value)} />
                   ) : f.type === "select" ? (
                     <select value={String(v)} onChange={(e) => set(e.target.value)}>
-                      {f.options?.map((o) => (
+                      {(f.optionsFrom ? remote[f.name] : f.options)?.map((o) => (
                         <option key={o.value} value={o.value}>
                           {o.label}
                         </option>
@@ -203,7 +221,7 @@ export function ResourceManager({ title, endpoint, fields, singular, selfId }: P
                           ) : c.column === "date" ? (
                             v ? new Date(String(v)).toLocaleString("pt-BR") : "—"
                           ) : (
-                            String(c.options?.find((o) => o.value === v)?.label ?? v ?? "")
+                            String((c.optionsFrom ? remote[c.name] : c.options)?.find((o) => o.value === (v ?? ""))?.label ?? v ?? "")
                           )}
                         </td>
                       );
