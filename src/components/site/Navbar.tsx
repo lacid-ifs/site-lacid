@@ -46,7 +46,7 @@ export function Navbar({ contactEmail, hasEvents }: { contactEmail: string; hasE
         </nav>
         <div className="navbar-acoes">
           <a href="/admin/login" className="btn-login-nav">
-            <i className="bi bi-person-circle" /> Entrar
+            <i className="bi bi-person-circle" /> <span>Entrar</span>
           </a>
           <button className="btn-aba-lateral" onClick={() => show("bi-envelope-at-fill", `Entre em contato: ${contactEmail}`)}>
             <i className="bi bi-envelope-fill" /> Contato
