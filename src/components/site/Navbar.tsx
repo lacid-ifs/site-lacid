@@ -44,9 +44,14 @@ export function Navbar({ contactEmail, hasEvents }: { contactEmail: string; hasE
           )}
           <a href="#membros" onClick={(e) => goTo(e, "membros")}>Nossa Equipe</a>
         </nav>
-        <button className="btn-aba-lateral" onClick={() => show("bi-envelope-at-fill", `Entre em contato: ${contactEmail}`)}>
-          <i className="bi bi-envelope-fill" /> Contato
-        </button>
+        <div className="navbar-acoes">
+          <a href="/admin/login" className="btn-login-nav">
+            <i className="bi bi-person-circle" /> Entrar
+          </a>
+          <button className="btn-aba-lateral" onClick={() => show("bi-envelope-at-fill", `Entre em contato: ${contactEmail}`)}>
+            <i className="bi bi-envelope-fill" /> Contato
+          </button>
+        </div>
       </header>
       {toast}
     </>

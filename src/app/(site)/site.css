@@ -1770,3 +1770,27 @@ body {
 .author-box span { font-family: 'AvantGarde-Medium', sans-serif; color: var(--azul-texto-claro); font-size: 0.9rem; }
 
 .noticia-capa { width: 100%; max-height: 480px; object-fit: cover; border-radius: 20px; margin-bottom: 20px; }
+
+/* Botao de login na navbar */
+.navbar-acoes { display: flex; align-items: center; gap: 18px; }
+
+.btn-login-nav {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 22px;
+    border: 2px solid var(--azul-lacid);
+    border-radius: 100px;
+    color: var(--azul-lacid);
+    text-decoration: none;
+    font-family: 'AvantGarde-Medium', sans-serif;
+    font-size: 1.05rem;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-login-nav:hover { background-color: var(--azul-lacid); color: #fff; transform: translateY(-2px); }
+
+@media (max-width: 700px) {
+    .btn-login-nav { padding: 8px 14px; font-size: 0.95rem; }
+    .navbar-acoes { gap: 8px; }
+}
