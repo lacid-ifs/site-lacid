@@ -16,3 +16,6 @@ npm-debug.log*
 !/uploads/.gitkeep
 .env.*
 !.env.example
+
+.vercel
+.env*
