@@ -1,0 +1,15 @@
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: lacid
+      POSTGRES_PASSWORD: lacid
+      POSTGRES_DB: lacid
+    ports:
+      - "5432:5432"
+    volumes:
+      - lacid-pg:/var/lib/postgresql/data
+
+volumes:
+  lacid-pg:

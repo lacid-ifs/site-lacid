@@ -1,0 +1,107 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN  // tudo, inclusive usuarios e configuracoes
+  EDITOR // todo o conteudo, nao gerencia usuarios
+  AUTHOR // cria noticias e edita apenas as proprias
+}
+
+enum PostStatus {
+  DRAFT
+  PUBLISHED
+}
+
+model User {
+  id        String   @id @default(cuid())
+  name      String
+  email     String   @unique
+  password  String
+  role      Role     @default(AUTHOR)
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  posts     Post[]
+}
+
+model Post {
+  id               String     @id @default(cuid())
+  slug             String     @unique
+  title            String
+  homeTitle        String?
+  detailTitleLines String[]
+  homeSummary      String     @default("")
+  subtitle         String     @default("")
+  sections         Json       @default("[]") // [{ title, paragraphs[], list[] }]
+  attachments      Json       @default("[]") // [{ label, href, icon }]
+  coverUrl         String?
+  status           PostStatus @default(DRAFT)
+  publishedAt      DateTime   @default(now())
+  authorId         String
+  author           User       @relation(fields: [authorId], references: [id])
+  createdAt        DateTime   @default(now())
+  updatedAt        DateTime   @updatedAt
+
+  @@index([status, publishedAt])
+}
+
+model Member {
+  id        String  @id @default(cuid())
+  name      String
+  role      String  @default("Membro da Liga")
+  course    String  @default("")
+  photoUrl  String  @default("/img/default_avatar.png")
+  linkedin  String?
+  github    String?
+  lattes    String?
+  order     Int     @default(0)
+  active    Boolean @default(true)
+}
+
+model CarouselSlide {
+  id     String  @id @default(cuid())
+  src    String
+  alt    String  @default("")
+  order  Int     @default(0)
+  active Boolean @default(true)
+}
+
+model Event {
+  id          String   @id @default(cuid())
+  title       String
+  description String   @default("")
+  location    String?
+  imageUrl    String?
+  link        String?
+  startsAt    DateTime
+  endsAt      DateTime?
+  published   Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([startsAt])
+}
+
+model Activity {
+  id       String  @id @default(cuid())
+  title    String
+  subtitle String  @default("")
+  text     String  @default("")
+  icon     String  @default("bi-lightbulb-fill") // classe do Bootstrap Icons
+  variant  String  @default("inovacao") // inovacao | extensao | oficinas | minicursos
+  order    Int     @default(0)
+  active   Boolean @default(true)
+}
+
+// Textos e dados soltos do site (quem somos, e-mail de contato, instagram...)
+model SiteSetting {
+  key       String   @id
+  value     Json
+  updatedAt DateTime @updatedAt
+}

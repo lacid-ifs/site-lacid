@@ -1,0 +1,184 @@
+{
+    "membros": [
+        {
+            "foto": "img/img_integrantes/rauan-phelipe.webp",
+            "nome": "Rauan Phelipe",
+            "cargo": "Membro da Liga",
+            "curso": "Sistemas de Informação",
+            "linkedin": "https://www.linkedin.com/in/rauan-phelipe-nascimento-de-jesus-1ba010382",
+            "github": "https://github.com/RauanPhelipe",
+            "lattes": "https://lattes.cnpq.br/3575301907981448"
+        },
+        {
+            "foto": "img/img_integrantes/gustavo-menezes.webp",
+            "nome": "Gustavo Menezes",
+            "cargo": "Membro da Liga",
+            "curso": "Sistemas de Informação",
+            "linkedin": "https://www.linkedin.com/in/gustavo-dos-anjos-menezes-052388288/",
+            "github": "https://github.com/GustaAnjoss",
+            "lattes": "https://lattes.cnpq.br/9398336059650671"
+        },
+        {
+            "foto": "img/img_integrantes/deyvisson-menezes.webp",
+            "nome": "Deyvisson Menezes",
+            "cargo": "Membro da Liga",
+            "curso": "Sistemas de Informação",
+            "linkedin": "https://www.linkedin.com/in/deyvisson-menezes-577979321",
+            "github": "https://github.com/devDeyvisson",
+            "lattes": "https://lattes.cnpq.br/8285501909601347"
+        },
+        {
+            "foto": "img/img_integrantes/isaias-de-padua.webp",
+            "nome": "Isaías de Pádua",
+            "cargo": "Membro da Liga",
+            "curso": "Sistemas de Informação",
+            "linkedin": "https://www.linkedin.com/in/isaías-de-pádua-a8ba3a349?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+            "github": "https://github.com/paduaisaias007-cmd",
+            "lattes": "https://lattes.cnpq.br/0433639096974823"
+        },
+        {
+            "foto": "img/img_integrantes/joao-paulo-santana.webp",
+            "nome": "João Paulo Santana",
+            "cargo": "Membro da Liga",
+            "curso": "Sistemas de Informação",
+            "linkedin": "https://www.linkedin.com/in/joaopaulosantana-dev/",
+            "github": "https://github.com/Ja0Santana",
+            "lattes": "http://lattes.cnpq.br/9903044475753680"
+        },
+        {
+            "foto": "img/img_integrantes/augusto.webp",
+            "nome": "Augusto",
+            "cargo": "Membro da Liga",
+            "curso": "Sistemas de Informação",
+            "linkedin": "https://www.linkedin.com/in/augustojrdev",
+            "github": "https://github.com/Augusto-Junior12",
+            "lattes": "http://lattes.cnpq.br/9925819760775683"
+        },
+        {
+            "foto": "img/img_integrantes/felipe-menezes.webp",
+            "nome": "Felipe Menezes",
+            "cargo": "Membro da Liga",
+            "curso": "Sistemas de Informação",
+            "linkedin": "https://www.linkedin.com/in/felipe-mzs/",
+            "github": "https://github.com/felipmz",
+            "lattes": "https://lattes.cnpq.br/5328812346089537"
+        },
+        {
+            "foto": "img/img_integrantes/alicia-mirelle.png",
+            "nome": "Alícia Mirelle",
+            "cargo": "Membro da Liga",
+            "curso": "Engenharia Elétrica",
+            "linkedin": "https://www.linkedin.com/in/alícia-mirelle-112244327?utm_source=share_via&utm_content=profile&utm_medium=member_ios",
+            "github": "https://github.com/AliciaMirelle",
+            "lattes": "#"
+        },
+        {
+            "foto": "img/img_integrantes/guilherme-da-invencao.webp",
+            "nome": "Guilherme da Invenção",
+            "cargo": "Membro da Liga",
+            "curso": "Sistemas de Informação",
+            "linkedin": "https://www.linkedin.com/in/invencaosts",
+            "github": "https://github.com/invencaosts",
+            "lattes": "http://lattes.cnpq.br/7304237008470623"
+        },
+        {
+            "foto": "img/img_integrantes/maria-isabella.webp",
+            "nome": "Maria Isabella",
+            "cargo": "Membro da Liga",
+            "curso": "Sistemas de Informação",
+            "linkedin": "https://www.linkedin.com/in/isabella-ribeiro-chaves-376505344",
+            "github": "https://github.com/mariaisabellaribeirochaves",
+            "lattes": "https://lattes.cnpq.br/4345285367153776"
+        },
+        {
+            "foto": "img/img_integrantes/kauan-cesar.webp",
+            "nome": "Kauan César",
+            "cargo": "Membro da Liga",
+            "curso": "Sistemas de Informação",
+            "linkedin": "https://www.linkedin.com/in/kauan-cesar/",
+            "github": "https://github.com/cesarka1",
+            "lattes": "http://lattes.cnpq.br/5466217488212529"
+        },
+        {
+            "foto": "img/img_integrantes/adrielly.webp",
+            "nome": "Adrielly",
+            "cargo": "Membro da Liga",
+            "curso": "Sistemas de Informação",
+            "linkedin": "https://www.linkedin.com/in/adrielly-santos-maranduba-9ab4b437a",
+            "github": "https://github.com/ellyenigena",
+            "lattes": "https://lattes.cnpq.br/4822083870390619"
+        },
+        {
+            "foto": "img/img_integrantes/jeferson-souza.png",
+            "nome": "Jeferson Souza",
+            "cargo": "Membro da Liga",
+            "curso": "Sistemas de Informação",
+            "linkedin": "https://www.linkedin.com/in/dev-jeferson-andrade/",
+            "github": "https://github.com/jefersonae",
+            "lattes": "http://lattes.cnpq.br/9024876953479247"
+        },
+        {
+            "foto": "img/img_integrantes/mariza.webp",
+            "nome": "Mariza",
+            "cargo": "Membro da Liga",
+            "curso": "Sistemas de Informação",
+            "linkedin": "#",
+            "github": "#",
+            "lattes": "#"
+        },
+        {
+            "foto": "img/img_integrantes/ernesto-santana.webp",
+            "nome": "Ernesto Santana",
+            "cargo": "Membro da Liga",
+            "curso": "Sistemas de Informação",
+            "linkedin": "https://www.linkedin.com/in/ernestossantana",
+            "github": "https://github.com/ONestoDev",
+            "lattes": "http://lattes.cnpq.br/9786410172079135"
+        },
+        {
+            "foto": "img/default_avatar.png",
+            "nome": "Alexandre Barbosa",
+            "cargo": "Membro da Liga",
+            "curso": "Sistemas de Informação",
+            "linkedin": "https://www.linkedin.com/in/alexandrebarbosa01/",
+            "github": "https://github.com/Alexandre-barbosa1",
+            "lattes": "https://lattes.cnpq.br/8519832049092581"
+        },
+        {
+            "foto": "img/default_avatar.png",
+            "nome": "Marcos Vinícius",
+            "cargo": "Membro da Liga",
+            "curso": "Sistemas de Informação",
+            "linkedin": "https://www.linkedin.com/in/marcos-vinícius-35358340a",
+            "github": "https://github.com/Marcos-Vinicius-Xavier",
+            "lattes": "https://lattes.cnpq.br/0127941964498389"
+        },
+        {
+            "foto": "img/default_avatar.png",
+            "nome": "Indigo",
+            "cargo": "Presidente",
+            "curso": "Sistemas de Informação",
+            "linkedin": "#",
+            "github": "#",
+            "lattes": "#"
+        },
+        {
+            "foto": "img/default_avatar.png",
+            "nome": "Gustavo Ferreira",
+            "cargo": "Membro da Liga",
+            "curso": "Sistemas de Informação",
+            "linkedin": "https://www.linkedin.com/in/gustavo-dos-anjos-ferreira-b56969218/",
+            "github": "https://github.com/Gustavogaf",
+            "lattes": "http://lattes.cnpq.br/2204341741337368"
+        },
+        {
+            "foto": "img/img_integrantes/antonio-neto.png",
+            "nome": "Antônio Neto",
+            "cargo": "Membro da Liga",
+            "curso": "Sistemas de Informação",
+            "linkedin": "https://www.linkedin.com/in/ant%C3%B4nio-ferreira-oliveira-neto-0b4ab6341",
+            "github": "https://github.com/Antonio-net0",
+            "lattes": "https://lattes.cnpq.br/4533274198094634"
+        }
+    ]
+}

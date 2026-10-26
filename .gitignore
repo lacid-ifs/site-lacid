@@ -1,0 +1,16 @@
+node_modules/
+.next/
+out/
+.env
+.env.local
+*.tsbuildinfo
+next-env.d.ts
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+npm-debug.log*
+
+# Uploads enviados pelo painel (em producao use storage externo)
+/uploads/*
+!/uploads/.gitkeep
