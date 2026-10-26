@@ -42,6 +42,9 @@ export function LoginForm() {
       <button className="btn" disabled={loading}>
         {loading ? "Entrando..." : "Entrar"}
       </button>
+      <a href="/" className="btn ghost" style={{ justifyContent: "center" }}>
+        <i className="bi bi-arrow-left" /> Voltar à tela inicial
+      </a>
     </form>
   );
 }
