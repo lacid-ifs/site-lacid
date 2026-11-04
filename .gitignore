@@ -19,3 +19,7 @@ npm-debug.log*
 
 .vercel
 .env*
+
+# Dumps do banco (tem e-mails e hashes de senha)
+*.sql
+!prisma/migrations/**/*.sql
