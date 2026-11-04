@@ -77,8 +77,7 @@ Configure no painel da hospedagem (nunca commite valores reais; o `.gitignore` j
 
 | Variável | Obrigatória | Descrição |
 | --- | --- | --- |
-| `DATABASE_URL` | Sim | String de conexão do Postgres usada pelo site. No Neon, use a URL **pooled** (com `-pooler` no host). |
-| `DATABASE_URL_DIRECT` | Sim | Conexão **direta** (sem `-pooler`), usada só pelas migrations no build. Em Postgres sem pooler, repita o valor de `DATABASE_URL`. |
+| `DATABASE_URL` | Sim | String de conexão do Postgres, usada pelo site e pelas migrations. No Neon, use a URL **direta** (host **sem** `-pooler`): as migrations não funcionam pelo pooler. |
 | `AUTH_SECRET` | Sim | Segredo do login. Gere com `npx auth secret` ou `openssl rand -base64 32`. Trocar o valor desloga todo mundo. |
 | `AUTH_TRUST_HOST` | Fora da Vercel | `true`. Necessário quando o app roda atrás de proxy ou domínio próprio. |
 | `BLOB_READ_WRITE_TOKEN` | Para uploads | Token do Vercel Blob. Sem ele, os uploads vão para o disco (`uploads/`), que **não persiste** na Vercel. |
@@ -89,7 +88,7 @@ Configure no painel da hospedagem (nunca commite valores reais; o `.gitignore` j
 
 1. **Banco:** crie um projeto Postgres no [Neon](https://neon.tech) (ou Supabase) e copie a `DATABASE_URL`.
 2. **Projeto:** na Vercel, **Add New → Project**, importe o repositório. O framework é detectado como Next.js e o build usa `npm run build`. Não mude nada.
-3. **Variáveis:** em **Settings → Environment Variables**, cadastre `DATABASE_URL` (pooled), `DATABASE_URL_DIRECT` (direta), `AUTH_SECRET` e as `SEED_ADMIN_*`.
+3. **Variáveis:** em **Settings → Environment Variables**, cadastre `DATABASE_URL` (URL direta do banco, no ambiente **Production**), `AUTH_SECRET` e as `SEED_ADMIN_*`.
 4. **Uploads:** em **Storage → Create → Blob**, crie o store e conecte ao projeto. A Vercel adiciona `BLOB_READ_WRITE_TOKEN` sozinha.
 5. **Deploy:** o build de **produção** roda `prisma migrate deploy` sozinho (veja "Migrations" abaixo), então as tabelas são criadas no primeiro deploy se o banco estiver vazio.
 6. **Dados iniciais** (uma vez, só se o banco novo estiver vazio e você **não** for restaurar um dump). Na sua máquina, apontando para o banco de produção:
@@ -124,7 +123,7 @@ O `migrate deploy` só aplica o que ainda não foi aplicado e não pede confirma
 Marcar a migration inicial como aplicada (para bancos que já têm as tabelas):
 
 ```bash
-DATABASE_URL_DIRECT="<url direta>" DATABASE_URL="<url direta>" npx prisma migrate resolve --applied 0_init
+DATABASE_URL="<url direta>" npx prisma migrate resolve --applied 0_init
 ```
 
 Sem isso, o build de produção tenta criar tabelas que já existem e **falha** (o site anterior continua no ar).
@@ -189,8 +188,9 @@ Quem recebe o projeto precisa de acesso a estas peças, que **não** vêm junto 
 | --- | --- |
 | Build falha com erro do Prisma | `DATABASE_URL` ausente ou inválida nas variáveis do build. |
 | Build de produção falha em `migrate deploy` com "already exists" | Banco já tinha as tabelas e a migration inicial não foi marcada: rode `prisma migrate resolve --applied 0_init`. |
-| Build de produção falha pedindo `DATABASE_URL_DIRECT` | Variável não cadastrada na Vercel, ou cadastrada só em Preview. Ela precisa estar em **Production**. |
+| Build de produção falha pedindo `DATABASE_URL` | Variável não cadastrada na Vercel, ou cadastrada só em Preview. Ela precisa estar em **Production**. |
+| `migrate deploy` trava ou dá timeout no build | `DATABASE_URL` com a URL **pooled** (`-pooler` no host). Troque pela URL direta. |
 | Erro de tabela inexistente | O deploy não era de produção (previews não migram) ou o banco novo ainda não recebeu `migrate deploy`. |
 | Login volta para a tela de login | `AUTH_SECRET` ausente, ou `AUTH_TRUST_HOST` faltando fora da Vercel. |
 | Upload dá certo mas a imagem some depois | Sem `BLOB_READ_WRITE_TOKEN`: está gravando em disco efêmero. |
-| Erro de "too many connections" no banco | Usando a URL direta do Neon em vez da **pooled**. |
+| Erro de "too many connections" no banco | Muitas conexões diretas abertas ao mesmo tempo (tráfego alto). Aí vale separar uma URL *pooled* para o site e uma direta para as migrations (`directUrl` no Prisma). |
